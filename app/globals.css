@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+:root {
+	--padding: 16px;
+
+	--foreground-color: #eee;
+	--foreground-muted: #888;
+
+	--background-color: #222;
+	--background-muted: #444;
+}
+
+.border-element {
+}
