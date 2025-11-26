@@ -1,14 +1,31 @@
 @import "tailwindcss";
 
 :root {
-	--padding: 16px;
+	--padding: 32px;
 
 	--foreground-color: #eee;
 	--foreground-muted: #888;
 
 	--background-color: #222;
 	--background-muted: #444;
+
+	-blur-sm: 8px;
 }
 
 .border-element {
+	z-index: 40;
+	/* --tw-backdrop-blur: blur(var(--blur-sm, 8px));
+	-webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness)
+		var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale)
+		var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert)
+		var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
+		var(--tw-backdrop-sepia);
+	backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness)
+		var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale)
+		var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert)
+		var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
+		var(--tw-backdrop-sepia); */
+	background-color: #0000;
+	background-image: radial-gradient(#0000 1px, #10100e 1px);
+	background-size: 4px 4px;
 }

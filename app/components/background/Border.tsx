@@ -12,11 +12,11 @@ export const Border = () => {
 
 	const [padding, setPadding] = useState(fallbackPadding); // Default value for SSR
 	const [pathData, setPathData] = useState(`
-		M ${padding * 2} ${padding * 2}
-		L ${padding * 2} ${padding * 2}
-		L ${padding * 2} ${padding * 2}
-		L ${padding * 2} ${padding * 2}
-		L ${padding * 2} ${padding * 2}
+		M ${padding} ${padding}
+		L ${padding} ${padding}
+		L ${padding} ${padding}
+		L ${padding} ${padding}
+		L ${padding} ${padding}
 	`);
 
 	const calculatePathData = useCallback(() => {
@@ -24,11 +24,11 @@ export const Border = () => {
 		const screenHeight = window.innerHeight ?? 0;
 
 		return `
-			M ${padding * 2} ${padding * 2}
-			L ${screenWidth - padding * 2} ${padding * 2}
-			L ${screenWidth - padding * 2} ${screenHeight - padding * 2}
-			L ${padding * 2} ${screenHeight - padding * 2}
-			L ${padding * 2} ${padding * 2}
+			M ${padding} ${padding}
+			L ${screenWidth - padding} ${padding}
+			L ${screenWidth - padding} ${screenHeight - padding}
+			L ${padding} ${screenHeight - padding}
+			L ${padding} ${padding}
 		`;
 	}, [padding]);
 
@@ -50,10 +50,10 @@ export const Border = () => {
 
 	return (
 		<>
-			<div className="border-element fixed inset-x-0 top-0 h-(--padding)" />
-			<div className="border-element fixed left-0 top-(--padding) bottom-(--padding) w-(--padding)" />
-			<div className="border-element fixed right-0 top-(--padding) bottom-(--padding) w-(--padding)" />
-			<div className="border-element fixed inset-x-0 bottom-0 h-(--padding)" />
+			<div className="border-element fixed inset-x-0 top-0 h-(--padding) backdrop-blur-xs" />
+			<div className="border-element fixed left-0 top-(--padding) bottom-(--padding) w-(--padding) backdrop-blur-xs" />
+			<div className="border-element fixed right-0 top-(--padding) bottom-(--padding) w-(--padding) backdrop-blur-xs" />
+			<div className="border-element fixed inset-x-0 bottom-0 h-(--padding) backdrop-blur-xs" />
 
 			<div className="pointer-events-none fixed inset-0 z-50">
 				<svg
