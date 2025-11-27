@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 export const WelcomePage = () => {
 	const startDelay = 2.5;
 
-	const namesDuration = 1;
+	const namesDuration = 0.6;
 
 	const seperatorDuration = namesDuration * 5;
 	const seperatorEase = "easeInOut";
