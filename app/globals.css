@@ -12,6 +12,12 @@
 	-blur-sm: 8px;
 }
 
+@media (max-width: 639px) {
+	:root {
+		--padding: 16px; /* Smaller padding for phones */
+	}
+}
+
 .border-element {
 	z-index: 40;
 	/* --tw-backdrop-blur: blur(var(--blur-sm, 8px));
@@ -28,4 +34,9 @@
 	background-color: #0000;
 	background-image: radial-gradient(#0000 1px, #10100e 1px);
 	background-size: 4px 4px;
+}
+
+body {
+	backgroubnd-color: var(--background-color);
+	color: var(--foreground-color);
 }
