@@ -2,23 +2,23 @@
 import { motion } from "motion/react";
 
 export const WelcomePage = () => {
-	const startDelay = 2.5;
+	const startDelay = 1.6;
 
 	const namesDuration = 0.6;
 
-	const seperatorDuration = namesDuration * 5;
+	const seperatorDuration = namesDuration * 4;
 	const seperatorEase = "easeInOut";
 
 	const namesDelay = 0.5 * seperatorDuration + startDelay;
 	const namesEase = "easeOut";
 
 	const subtitleDelay = startDelay + seperatorDuration;
-	const subtitleDuration = 1;
+	const subtitleDuration = 0.6;
 	const subtitleEase = "easeOut";
 
 	return (
 		<>
-			<div className="text-5xl sm:text-6xl font-bold *:inline-block flex items-center justify-center">
+			<div className="text-5xl sm:text-6xl font-bold *:inline-block flex items-center justify-center w-full h-full">
 				{/* Vezetéknév */}
 				<div className="h-min w-min overflow-hidden">
 					<motion.h1
