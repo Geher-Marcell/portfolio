@@ -2,11 +2,11 @@
 import { motion } from "motion/react";
 
 export const WelcomePage = () => {
-	const startDelay = 1.6;
+	const startDelay = 1.2;
 
-	const namesDuration = 0.6;
+	const namesDuration = 0.5;
 
-	const seperatorDuration = namesDuration * 4;
+	const seperatorDuration = namesDuration * 3;
 	const seperatorEase = "easeInOut";
 
 	const namesDelay = 0.5 * seperatorDuration + startDelay;
@@ -45,7 +45,7 @@ export const WelcomePage = () => {
 					transition={{
 						delay: startDelay,
 						duration: seperatorDuration, // total animation time
-						times: [0, 0.3, 0.8, 1],
+						times: [0, 0.2, 0.9, 1],
 						ease: seperatorEase,
 					}}
 				/>

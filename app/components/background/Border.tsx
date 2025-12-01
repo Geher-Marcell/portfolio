@@ -69,7 +69,7 @@ export const Border = () => {
 						d={pathData}
 						initial={{ pathLength: 0 }}
 						animate={{ pathLength: [0, 1] }}
-						transition={{ duration: 1.5, ease: "easeInOut" }}
+						transition={{ duration: 1.2, ease: "easeInOut" }}
 					/>
 				</svg>
 			</div>

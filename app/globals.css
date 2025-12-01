@@ -36,9 +36,18 @@
 	background-size: 4px 4px;
 }
 
+* {
+    --scroll-behavior: smooth!important;
+	scroll-behavior: smooth!important;
+}
+
 body {
-	backgroubnd-color: var(--background-color);
+	background-color: var(--background-color);
 	color: var(--foreground-color);
+}
+
+#welcomePage, #aboutPage {
+	scroll-margin-top: 6rem;
 }
 
 /* Scrollbar styling */
