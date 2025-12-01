@@ -3,7 +3,25 @@
 import { motion, useAnimate } from "motion/react";
 import { useEffect } from "react";
 
-const Circle: React.FC<{ color: string }> = ({ color = "red" }) => {
+const Circle: React.FC<{
+	color?: string;
+	backgroundGradient?: string;
+	blurAmount: number;
+	top?: number;
+	bottom?: number;
+	left?: number;
+	right?: number;
+	size: number;
+}> = ({
+	color = "transparent",
+	backgroundGradient = "none",
+	blurAmount,
+	top,
+	bottom,
+	left,
+	right,
+	size,
+}) => {
 	const [scope, animate] = useAnimate();
 
 	useEffect(() => {
@@ -12,8 +30,8 @@ const Circle: React.FC<{ color: string }> = ({ color = "red" }) => {
 				const randBetween = (min: number, max: number) =>
 					Math.random() * (max - min) + min;
 
-				const x = randBetween(-100, 100);
-				const y = randBetween(-100, 100);
+				const x = randBetween(-50, 50);
+				const y = randBetween(-50, 50);
 
 				await animate(
 					scope.current,
@@ -33,27 +51,28 @@ const Circle: React.FC<{ color: string }> = ({ color = "red" }) => {
 			<motion.div
 				ref={scope}
 				initial={{
-					scale: 0,
-					top: `50%`,
-					left: `50%`,
+					opacity: 0,
 				}}
 				animate={{
-					scale: 1,
-					left: [`50%`, `70%`],
+					opacity: 1,
 				}}
 				transition={{
-					type: "spring",
-					stiffness: 20,
-					damping: 8,
-					left: {
-						delay: 1,
-						type: "spring",
-						stiffness: 50,
-						damping: 10,
-					},
+					ease: "easeInOut",
+					duration: 0.6,
+					delay: 1.2,
 				}}
-				className={`w-80 h-80 rounded-full absolute -translate-x-1/2 -translate-y-1/2 no-scrollbar`}
-				style={{ backgroundColor: color }}
+				className={`rounded-full absolute -translate-x-1/2 -translate-y-1/2 no-scrollbar z-0`}
+				style={{
+					width: size + "px",
+					height: size + "px",
+					backgroundColor: color,
+					backgroundImage: backgroundGradient,
+					top: top,
+					bottom: bottom,
+					left: left,
+					right: right,
+					filter: `blur(${blurAmount}px)`,
+				}}
 			/>
 		</>
 	);

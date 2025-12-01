@@ -51,10 +51,10 @@ export const Border = () => {
 
 	return (
 		<>
-			<div className="border-element fixed inset-x-0 top-0 h-(--padding) backdrop-blur-lg" />
-			<div className="border-element fixed left-0 top-(--padding) bottom-(--padding) w-(--padding) backdrop-blur-lg" />
-			<div className="border-element fixed right-0 top-(--padding) bottom-(--padding) w-(--padding) backdrop-blur-lg" />
-			<div className="border-element fixed inset-x-0 bottom-0 h-(--padding) backdrop-blur-lg" />
+			<div className="border-element fixed inset-x-0 top-0 h-(--padding) backdrop-blur-md" />
+			<div className="border-element fixed left-0 top-(--padding) bottom-(--padding) w-(--padding) backdrop-blur-md" />
+			<div className="border-element fixed right-0 top-(--padding) bottom-(--padding) w-(--padding) backdrop-blur-md" />
+			<div className="border-element fixed inset-x-0 bottom-0 h-(--padding) backdrop-blur-md" />
 
 			<div className="pointer-events-none fixed inset-0 z-50">
 				<svg
@@ -69,7 +69,7 @@ export const Border = () => {
 						d={pathData}
 						initial={{ pathLength: 0 }}
 						animate={{ pathLength: [0, 1] }}
-						transition={{ duration: 1.2, ease: "easeInOut" }}
+						transition={{ duration: 1.5, ease: "easeInOut" }}
 					/>
 				</svg>
 			</div>

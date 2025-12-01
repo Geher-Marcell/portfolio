@@ -9,6 +9,9 @@
 	--background-color: #222;
 	--background-muted: #444;
 
+	--primary-color: rgba(180, 19, 19, 1);
+	--primary-muted: rgba(110, 12, 12, 1);
+
 	-blur-sm: 8px;
 }
 
@@ -37,8 +40,8 @@
 }
 
 * {
-    --scroll-behavior: smooth!important;
-	scroll-behavior: smooth!important;
+	--scroll-behavior: smooth !important;
+	scroll-behavior: smooth !important;
 }
 
 body {
@@ -46,7 +49,10 @@ body {
 	color: var(--foreground-color);
 }
 
-#welcomePage, #aboutPage {
+#welcomePage,
+#aboutPage,
+#projectsPage,
+#contactPage {
 	scroll-margin-top: 6rem;
 }
 
