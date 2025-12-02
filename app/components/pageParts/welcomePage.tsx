@@ -18,7 +18,7 @@ export const WelcomePage = () => {
 
 	return (
 		<>
-			<div className="text-5xl sm:text-6xl font-bold *:inline-block flex items-center justify-center w-full h-full">
+			<div className="text-[12vw] sm:text-6xl font-bold *:inline-block flex items-center justify-center w-full h-full">
 				{/* Vezetéknév */}
 				<div className="h-min w-min overflow-hidden">
 					<motion.h1
@@ -35,7 +35,7 @@ export const WelcomePage = () => {
 				</div>
 				{/* Elválasztó */}
 				<motion.div
-					className="w-0.5 bg-(--foreground-color) mx-1.5"
+					className="w-0.5 bg-(--foreground-color) mx-1 sm:mx-1.5"
 					initial={{
 						height: "0px",
 					}}

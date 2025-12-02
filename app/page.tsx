@@ -2,7 +2,6 @@ import { Border } from "./components/background/Border";
 import { WelcomePage } from "./components/pageParts/welcomePage";
 import { AboutPage } from "./components/pageParts/aboutPage";
 import Navbar from "./components/navigation/Navbar";
-import Circle from "./components/background/Circle";
 
 export default function Home() {
 	return (

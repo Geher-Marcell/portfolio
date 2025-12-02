@@ -20,7 +20,7 @@
 
 @media (max-width: 639px) {
 	:root {
-		--padding: 16px; /* Smaller padding for phones */
+		--padding: 18px; /* Smaller padding for phones */
 	}
 }
 
