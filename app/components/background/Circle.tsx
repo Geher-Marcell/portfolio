@@ -61,7 +61,7 @@ const Circle: React.FC<{
 					duration: 0.6,
 					delay: 1.2,
 				}}
-				className={`rounded-full absolute -translate-x-1/2 -translate-y-1/2 no-scrollbar`}
+				className={`rounded-full absolute -translate-x-1/2 -translate-y-1/2 no-scrollbar z-0`}
 				style={{
 					width: size + "px",
 					height: size + "px",

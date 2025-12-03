@@ -12,7 +12,7 @@ const links = [
 const Navbar: React.FC = () => {
 	const animDelay = 1.2;
 	const animDuration = 0.6;
-	const autoScrollThreshold = 0.6;
+	const autoScrollThreshold = 0.7;
 
 	const [currentPage, setCurrentPage] = useState<string>("#welcomePage");
 	const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
 										{link.label}
 										{link.href === currentPage && (
 											<motion.div
-												layoutId="underline"
+												layoutId="underline-desktop"
 												className="absolute bottom-0 left-0 right-0 h-0.5 bg-(--primary-color) rounded-full"
 												// transition={{ type: "spring", stiffness: 500, damping: 30 }}
 												transition={{ ease: "easeOut", duration: 0.2 }}
@@ -153,7 +153,7 @@ const Navbar: React.FC = () => {
 											{link.label}
 											{link.href === currentPage && (
 												<motion.div
-													layoutId="underline"
+													layoutId="underline-mobile"
 													className="absolute top-0 bottom-0 left-0 w-1 bg-(--primary-color) rounded-full"
 													transition={{ ease: "easeOut", duration: 0.2 }}
 												/>

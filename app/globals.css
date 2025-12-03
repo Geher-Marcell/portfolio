@@ -71,6 +71,7 @@ body {
 #projectsPage,
 #contactPage {
 	scroll-margin-top: 6rem;
+	z-index: 20;
 }
 
 /* Scrollbar styling */
