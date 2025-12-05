@@ -22,7 +22,7 @@ export const WelcomePage = () => {
 				{/* Vezetéknév */}
 				<div className="h-min w-min overflow-hidden">
 					<motion.h1
-						initial={{ x: 180 }}
+						initial={{ x: "100%" }}
 						animate={{ x: 0 }}
 						transition={{
 							duration: namesDuration,
@@ -52,7 +52,7 @@ export const WelcomePage = () => {
 				{/* Keresztnév */}
 				<div className="h-min w-min overflow-hidden">
 					<motion.h1
-						initial={{ x: -220 }}
+						initial={{ x: "-100%" }}
 						animate={{ x: 0 }}
 						transition={{
 							duration: namesDuration,

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/purity */
 "use client";
 import { motion, useAnimate } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Circle: React.FC<{
 	color?: string;
@@ -23,6 +23,9 @@ const Circle: React.FC<{
 	size,
 }) => {
 	const [scope, animate] = useAnimate();
+
+	const translateX = top ? "-50%" : bottom ? "50%" : "0";
+	const translateY = left ? "-50%" : right ? "50%" : "0";
 
 	useEffect(() => {
 		const wiggleAnimation = async () => {
@@ -46,6 +49,8 @@ const Circle: React.FC<{
 		wiggleAnimation();
 	}, [animate, scope]);
 
+	//TODO halve circle's size, position on mobile
+
 	return (
 		<>
 			<motion.div
@@ -59,10 +64,13 @@ const Circle: React.FC<{
 				transition={{
 					ease: "easeInOut",
 					duration: 0.6,
-					delay: 1.2,
+					delay: 1.6,
 				}}
-				className={`rounded-full absolute -translate-x-1/2 -translate-y-1/2 no-scrollbar z-0`}
+				className={`rounded-full absolute z-0`}
 				style={{
+					translateX: translateX,
+					translateY: translateY,
+
 					width: size + "px",
 					height: size + "px",
 					backgroundColor: color,

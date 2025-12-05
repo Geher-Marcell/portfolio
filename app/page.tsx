@@ -13,16 +13,16 @@ export default function Home() {
 					<Border />
 					<div className="bg-(--background-color) h-dvh overflow-auto">
 						<main className="relative flex flex-col p-6 sm:p-16 gap-10">
-							<div className="invisible sm:visible">
+							<div className="absolute min-w-[calc(100dvw-8rem)] min-h-[calc(100dvh-8rem)]">
 								<Circle
-									backgroundGradient="linear-gradient(45deg, #ac2b2b, #db4e2aff)"
-									top={700}
-									right={-80}
+									backgroundGradient="linear-gradient(45deg, #ac2b2b, #db882aff)"
+									bottom={200}
+									right={200}
 									blurAmount={80}
 									size={320}
 								/>
 								<Circle
-									backgroundGradient="linear-gradient(225deg, #3636adff, #1a52a7)"
+									backgroundGradient="linear-gradient(225deg, #36ad50ff, #81a71aff)"
 									top={200}
 									left={100}
 									blurAmount={80}
