@@ -15,17 +15,17 @@ export default function Home() {
 						<main className="relative flex flex-col p-6 sm:p-16 gap-10">
 							<div className="absolute min-w-[calc(100dvw-8rem)] min-h-[calc(100dvh-8rem)]">
 								<Circle
-									backgroundGradient="linear-gradient(45deg, #ac2b2b, #db882aff)"
+									backgroundGradient="radial-gradient(circle, #a52727ff, #a13a20ff)"
 									bottom={200}
 									right={200}
-									blurAmount={80}
+									blurAmount={40}
 									size={320}
 								/>
 								<Circle
-									backgroundGradient="linear-gradient(225deg, #36ad50ff, #81a71aff)"
+									backgroundGradient="radial-gradient(circle, #1a52a7ff, #25256bff)"
 									top={200}
 									left={100}
-									blurAmount={80}
+									blurAmount={40}
 									size={220}
 								/>
 							</div>

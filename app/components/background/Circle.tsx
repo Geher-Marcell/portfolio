@@ -23,6 +23,26 @@ const Circle: React.FC<{
 	size,
 }) => {
 	const [scope, animate] = useAnimate();
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		const mobileBreakpoint = parseInt(
+			getComputedStyle(document.documentElement).getPropertyValue(
+				"--tw-screen-sm"
+			) || "639",
+			10
+		);
+
+		const handleResize = () => {
+			setIsMobile(window.innerWidth <= mobileBreakpoint);
+		};
+		handleResize();
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	const PosMultiplier = isMobile ? 0.2 : 1;
+	const SizeMultiplier = isMobile ? 0.6 : 1;
 
 	const translateX = top ? "-50%" : bottom ? "50%" : "0";
 	const translateY = left ? "-50%" : right ? "50%" : "0";
@@ -49,8 +69,6 @@ const Circle: React.FC<{
 		wiggleAnimation();
 	}, [animate, scope]);
 
-	//TODO halve circle's size, position on mobile
-
 	return (
 		<>
 			<motion.div
@@ -71,14 +89,14 @@ const Circle: React.FC<{
 					translateX: translateX,
 					translateY: translateY,
 
-					width: size + "px",
-					height: size + "px",
+					width: size * SizeMultiplier + "px",
+					height: size * SizeMultiplier + "px",
 					backgroundColor: color,
 					backgroundImage: backgroundGradient,
-					top: top,
-					bottom: bottom,
-					left: left,
-					right: right,
+					top: top ? top * PosMultiplier : undefined,
+					bottom: bottom ? bottom * PosMultiplier : undefined,
+					left: left ? left * PosMultiplier : undefined,
+					right: right ? right * PosMultiplier : undefined,
 					filter: `blur(${blurAmount}px)`,
 				}}
 			/>
