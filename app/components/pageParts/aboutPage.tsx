@@ -4,7 +4,7 @@ export const AboutPage = () => {
 	return (
 		<>
 			<div className="text-lg space-y-4">
-				<h1 className="text-4xl font-semibold mb-8">About me</h1>
+				<h1 className="text-4xl font-semibold mb-8">About Me</h1>
 				<p>
 					Hi, I&apos;m Gehér Marcell and I build full-stack web applications
 					using <b>Next.js</b>.
