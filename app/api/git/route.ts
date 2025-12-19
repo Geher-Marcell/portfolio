@@ -4,10 +4,17 @@ import { NextRequest, NextResponse } from "next/server";
 
 const GithubReposUrl = "https://api.github.com/users/Geher-Marcell/repos";
 
+let cachedAt: number | null = null;
 let repos: string | unknown[] = [];
 
 export async function GET(req: NextRequest) {
-	if (repos.length > 0) {
+	if (repos.length > 0 && cachedAt && new Date().getTime() - cachedAt < 60000) {
+		// 1 minute cache
+		console.log(
+			"Returning cached repos. Time until refresh:",
+			60000 - (new Date().getTime() - cachedAt),
+			"ms"
+		);
 		return NextResponse.json(repos);
 	}
 
@@ -52,6 +59,7 @@ export async function GET(req: NextRequest) {
 		}
 
 		repos = data;
+		cachedAt = new Date().getTime();
 
 		return NextResponse.json(data);
 	} catch (error) {
