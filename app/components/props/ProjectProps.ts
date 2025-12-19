@@ -1,12 +1,11 @@
 import { TechnologyProps } from "./TechnologyProps";
-import { TypeProps } from "./TypeProps";
 
 export type ProjectProps = {
-	title: string;
+	name: string;
 	description: string;
+	homepage?: string;
 	imageUrl: string;
-	githubUrl: string;
-	demoUrl: string;
-	type: TypeProps;
+	stargazers_count: number;
+	forks_count: number;
 	technologies: TechnologyProps[];
 };

@@ -1,31 +1,39 @@
+/* eslint-disable @next/next/no-img-element */
 import { Fragment } from "react";
-import Image from "next/image";
 import DynamicFAIcon from "../../common/DynamicFaIcon";
 import Badge from "../../common/Badge";
 import { ProjectProps } from "../../props/ProjectProps";
 
 export const ProjectWidget = (project: ProjectProps) => {
 	return (
-		<Fragment key={project.title}>
+		<Fragment key={project.name}>
 			<div className="border-2 border-(--foreground-muted) rounded-2xl w-90 flex flex-col overflow-hidden relative">
 				<Badge
-					text={project.type.title}
-					icon={project.type.icon}
+					text={project.stargazers_count + ""}
+					icon="faStar"
 					absolute={true}
 				/>
-				<div>
-					<Image
+				<div className="relative">
+					<img
 						src={project.imageUrl}
-						alt={project.title}
+						alt={project.name}
 						width={400}
 						height={200}
-						className="w-full h-auto object-cover"
+						className={`w-full h-40 object-cover ${
+							project.imageUrl.includes("image.thum") ? "" : "invert-90"
+						}`}
 					/>
+					{!project.imageUrl.includes("image.thum") && (
+						<>
+							<div className="w-15 h-15 absolute right-6 top-4 rounded-lg backdrop-invert-90"></div>
+						</>
+					)}
 				</div>
-				<div className="bg-[#222] p-4">
-					<h1 className="font-bold text-xl">{project.title}</h1>
-					<p className="mt-2 text-(--foreground-muted) text-[1rem]">
-						{project.description}
+				<div className="bg-[#222] p-4 h-full flex flex-col justify-between">
+					<h1 className="font-bold text-xl overflow-x-auto">{project.name}</h1>
+					<p className="mt-2 text-(--foreground-muted) text-[1rem]min-h-12">
+						{project.description?.substring(0, 70) ?? "No description provided"}
+						{project.description?.length > 70 ? "..." : ""}
 					</p>
 					<div className="flex mt-2 justify-between items-center">
 						{project.technologies && (
