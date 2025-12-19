@@ -4,6 +4,7 @@ import { AboutPage } from "./components/pageParts/aboutPage";
 import Navbar from "./components/navigation/Navbar";
 import Circle from "./components/background/Circle";
 import { ContactPage } from "./components/pageParts/contactPage";
+import { ProjectsPage } from "./components/pageParts/projects/projectsPage";
 
 export default function Home() {
 	return (
@@ -50,16 +51,11 @@ export default function Home() {
 									<WelcomePage />
 								</div>
 							</div>
-							<div className="px-6 w-full h-full" id="aboutPage">
+							<div className="px-10 w-full" id="aboutPage">
 								<AboutPage />
 							</div>
-							<div className="w-full h-200 pl-10" id="projectsPage">
-								<h1 className="inline-block text-4xl font-semibold">
-									My projects
-								</h1>
-								<div className="bg-red-500 inline-block rotate-30 -translate-y-6 px-1 rounded-lg font-bold">
-									WIP
-								</div>
+							<div className="w-full px-10" id="projectsPage">
+								<ProjectsPage />
 							</div>
 							<div className="w-full px-10" id="contactPage">
 								<ContactPage />
