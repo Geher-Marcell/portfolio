@@ -12,7 +12,7 @@ const links = [
 const Navbar: React.FC = () => {
 	const animDelay = 1.2;
 	const animDuration = 0.6;
-	const autoScrollThreshold = 0.7;
+	const autoScrollThreshold = 0.1;
 
 	const [currentPage, setCurrentPage] = useState<string>("#welcomePage");
 	const sectionRefs = useRef<Record<string, HTMLElement | null>>({});

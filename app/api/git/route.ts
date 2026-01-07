@@ -52,7 +52,9 @@ export async function GET(req: NextRequest) {
 				if (repo.homepage.startsWith("http://"))
 					repo.homepage = repo.homepage.replace("http://", "");
 
-				repo.imageUrl = `https://image.thum.io/get/https://${repo.homepage}`;
+				repo.homepage = "https://" + repo.homepage;
+
+				repo.imageUrl = `https://image.thum.io/get/${repo.homepage}`;
 			} else {
 				repo.imageUrl = `https://opengraph.githubassets.com/1/Geher-Marcell/${repo.name}`; // Fallback to GitHub Open Graph image
 			}

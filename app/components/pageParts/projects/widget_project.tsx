@@ -3,11 +3,12 @@ import { Fragment } from "react";
 import DynamicFAIcon from "../../common/DynamicFaIcon";
 import Badge from "../../common/Badge";
 import { ProjectProps } from "../../props/ProjectProps";
+import Link from "next/link";
 
 export const ProjectWidget = (project: ProjectProps) => {
 	return (
 		<Fragment key={project.name}>
-			<div className="border-2 border-(--foreground-muted) rounded-2xl w-90 flex flex-col overflow-hidden relative">
+			<div className="border-2 border-(--foreground-muted) rounded-2xl w-96 flex flex-col overflow-hidden relative">
 				<Badge
 					text={project.stargazers_count + ""}
 					icon="faStar"
@@ -25,7 +26,9 @@ export const ProjectWidget = (project: ProjectProps) => {
 					/>
 					{!project.imageUrl.includes("image.thum") && (
 						<>
-							<div className="w-15 h-15 absolute right-6 top-4 rounded-lg backdrop-invert-90"></div>
+							{" "}
+							{/* A small image to invert the inverted profile picture */}
+							<div className="w-15.5 h-15.5 absolute right-6.5 top-3 rounded-lg backdrop-invert-90"></div>
 						</>
 					)}
 				</div>
@@ -55,12 +58,28 @@ export const ProjectWidget = (project: ProjectProps) => {
 							</div>
 						)}
 						<div className="space-x-1">
-							<DynamicFAIcon exportName="faGithub" size="lg" className="" />
-							<DynamicFAIcon
-								exportName="faExternalLinkSquareAlt"
-								size="lg"
-								className=""
-							/>
+							{project.homepage &&
+								(console.log("Homepage:", project.homepage),
+								(
+									<Link
+										href={project.homepage}
+										target="blank"
+										rel="noopener noreferrer"
+									>
+										<DynamicFAIcon
+											exportName="faExternalLinkSquareAlt"
+											size="lg"
+											className=""
+										/>
+									</Link>
+								))}
+							<Link
+								href={project.html_url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<DynamicFAIcon exportName="faGithub" size="lg" className="" />
+							</Link>
 						</div>
 					</div>
 				</div>
