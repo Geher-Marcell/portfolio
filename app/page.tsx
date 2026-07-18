@@ -46,19 +46,38 @@ export default function Home() {
 									size={120}
 								/>
 							</div>
-							<div className="w-full h-full" id="welcomePage">
+							<div
+								className="w-full h-full"
+								id="homePage"
+								data-name="Home"
+							>
 								<div className="relative flex min-h-[calc(100dvh-5rem)] w-full flex-col sm:min-h-[calc(100dvh-8rem)] sm:py-8 items-center justify-center border-b border-(--foreground-color)/10">
 									<WelcomePage />
 								</div>
 							</div>
-							<div className="px-10 w-full" id="aboutPage">
-								<AboutPage />
+							<div
+								className="px-10 w-full"
+								id="aboutPage"
+								data-name="About"
+							>
+								{/* <AboutPage /> */}
+								<div className="h-[500px] border-green-500 border-2" />
 							</div>
-							<div className="w-full px-10" id="projectsPage">
-								<ProjectsPage />
+							<div
+								className="w-full px-10"
+								id="projectsPage"
+								data-name="Projects"
+							>
+								{/* Projects Page goes here */}
+								<div className="h-[800px] border-amber-500 border-2" />
 							</div>
-							<div className="w-full px-10" id="contactPage">
-								<ContactPage />
+							<div
+								className="w-full px-10"
+								id="contactPage"
+								data-name="Contact"
+							>
+								{/* <ContactPage /> */}
+								<div className="h-[500px] border-red-500 border-2" />
 							</div>
 						</main>
 					</div>

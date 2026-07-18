@@ -8,7 +8,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<title>Gehér Marcell | Fullstack web developer</title>
+				<title>Gehér Marcell | Fullstack Web Developer</title>
 			</head>
 			<body className="w-screen h-dvh">{children}</body>
 		</html>

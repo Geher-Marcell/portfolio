@@ -28,9 +28,9 @@ const Circle: React.FC<{
 	useEffect(() => {
 		const mobileBreakpoint = parseInt(
 			getComputedStyle(document.documentElement).getPropertyValue(
-				"--tw-screen-sm"
+				"--tw-screen-sm",
 			) || "639",
-			10
+			10,
 		);
 
 		const handleResize = () => {
@@ -62,7 +62,7 @@ const Circle: React.FC<{
 					{
 						ease: "easeInOut",
 						duration: 5,
-					}
+					},
 				);
 			}
 		};

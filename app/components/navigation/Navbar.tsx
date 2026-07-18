@@ -2,58 +2,58 @@
 import { AnimatePresence, motion } from "motion/react";
 import React, { useRef, useState } from "react";
 
-const links = [
-	{ href: "#welcomePage", label: "Home" },
-	{ href: "#aboutPage", label: "About" },
-	{ href: "#projectsPage", label: "Projects" },
-	{ href: "#contactPage", label: "Contacts" },
-];
+interface NavbarProps {
+	id: string;
+	name: string;
+}
 
 const Navbar: React.FC = () => {
 	const animDelay = 1.2;
 	const animDuration = 0.6;
 	const autoScrollThreshold = 0.1;
 
-	const [currentPage, setCurrentPage] = useState<string>("#welcomePage");
-	const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+	const [currentPage, setCurrentPage] = useState<string>("#homePage");
 
 	const [opened, setIsOpen] = useState(false);
 
-	React.useEffect(() => {
-		sectionRefs.current["#welcomePage"] =
-			document.getElementById("welcomePage");
-		sectionRefs.current["#aboutPage"] = document.getElementById("aboutPage");
-		sectionRefs.current["#projectsPage"] =
-			document.getElementById("projectsPage");
-		sectionRefs.current["#contactPage"] =
-			document.getElementById("contactPage");
-	}, []);
+	const [sections, setSections] = useState<NavbarProps[]>([]);
 
 	React.useEffect(() => {
+		const objects = document.querySelectorAll("[data-name]");
+		const collected: NavbarProps[] = [];
+		for (const obj of objects) {
+			const name = obj.getAttribute("data-name") || "Unknown";
+			const id = "#" + obj.getAttribute("id");
+			collected.push({ id, name });
+		}
+		setSections(collected);
+
+		const visible = new Map<string, boolean>();
+
 		const observer = new IntersectionObserver(
 			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						setCurrentPage(`#${entry.target.id}`);
-					}
-				});
+				for (const entry of entries) {
+					visible.set("#" + entry.target.id, entry.isIntersecting);
+				}
+				const firstVisible = collected.find((s) => visible.get(s.id));
+				if (firstVisible) {
+					setCurrentPage(firstVisible.id);
+				}
 			},
-			{ threshold: autoScrollThreshold }
+			{ rootMargin: "-50% 0px -50% 0px" },
 		);
 
-		Object.values(sectionRefs.current).forEach((section) => {
-			if (section) observer.observe(section);
-		});
+		for (const obj of objects) {
+			observer.observe(obj);
+		}
 
-		return () => {
-			observer.disconnect();
-		};
+		return () => observer.disconnect();
 	}, []);
 
 	// Smooth scrolling to section and preventing default behavior
 	const handleLinkClick = (
 		event: React.MouseEvent<HTMLAnchorElement>,
-		targetId: string
+		targetId: string,
 	) => {
 		event.preventDefault();
 		const targetElement = document.querySelector(targetId);
@@ -73,26 +73,42 @@ const Navbar: React.FC = () => {
 					duration: animDuration,
 					ease: "easeOut",
 				}}
-				className="*:max-w-140 *:h-10 *:bg-neutral-900 *:absolute *:left-1/2 *:-translate-x-1/2 *:rounded-lg *:shadow-lg *:z-50"
+				className="*:max-w-140  *:bg-neutral-900 *:absolute *:left-1/2 *:-translate-x-1/2 *:rounded-2xl *:shadow-lg *:z-50 *:border *:border-neutral-700"
 			>
 				{/* Desktop View */}
-				<div className="w-5/6 top-14 hidden sm:block overflow-hidden">
-					<div className="flex justify-center items-center h-full">
-						<div className="w-fit gap-4 text-center justify-center h-full flex items-center px-4 relative">
-							{links.map((link) => (
-								<React.Fragment key={link.href}>
+				<div className="top-14 hidden sm:block py-1 px-2">
+					<div className="flex justify-center items-center">
+						<div className="gap-4 flex items-center justify-center relative">
+							{sections.map((section) => (
+								<React.Fragment key={section.id}>
 									<a
-										href={link.href}
-										onClick={(event) => handleLinkClick(event, link.href)}
+										href={section.id}
+										onClick={(event) =>
+											handleLinkClick(event, section.id)
+										}
 										className={`relative px-3 py-2 text-(--foreground-color)`}
+										style={{
+											opacity:
+												section.id === currentPage
+													? 1
+													: 0.4,
+											fontWeight:
+												section.id === currentPage
+													? "bold"
+													: "normal",
+											transition:
+												"opacity 0.3s, font-weight 0.3s",
+										}}
 									>
-										{link.label}
-										{link.href === currentPage && (
+										{section.name}
+										{section.id === currentPage && (
 											<motion.div
 												layoutId="underline-desktop"
-												className="absolute bottom-0 left-0 right-0 h-0.5 bg-(--primary-color) rounded-full"
-												// transition={{ type: "spring", stiffness: 500, damping: 30 }}
-												transition={{ ease: "easeOut", duration: 0.2 }}
+												className="absolute top-0 bottom-0 left-0 right-0 bg-(--primary-color)/50 rounded-xl -mx-1 z-[-1]"
+												transition={{
+													ease: "easeOut",
+													duration: 0.2,
+												}}
 											/>
 										)}
 									</a>
@@ -102,7 +118,7 @@ const Navbar: React.FC = () => {
 					</div>
 				</div>
 				{/* Mobile View */}
-				<div className="w-5/6 top-8 block sm:hidden">
+				{/* <div className="w-5/6 top-8 block sm:hidden">
 					<div className="flex sm:hidden items-center justify-end h-full">
 						<motion.button
 							onClick={() => setIsOpen(!opened)}
@@ -147,7 +163,12 @@ const Navbar: React.FC = () => {
 									<React.Fragment key={link.href}>
 										<a
 											href={link.href}
-											onClick={(event) => handleLinkClick(event, link.href)}
+											onClick={(event) =>
+												handleLinkClick(
+													event,
+													link.href,
+												)
+											}
 											className={`relative px-3 py-2 text-(--foreground-color)`}
 										>
 											{link.label}
@@ -155,7 +176,10 @@ const Navbar: React.FC = () => {
 												<motion.div
 													layoutId="underline-mobile"
 													className="absolute top-0 bottom-0 left-0 w-1 bg-(--primary-color) rounded-full"
-													transition={{ ease: "easeOut", duration: 0.2 }}
+													transition={{
+														ease: "easeOut",
+														duration: 0.2,
+													}}
 												/>
 											)}
 										</a>
@@ -164,7 +188,7 @@ const Navbar: React.FC = () => {
 							</motion.div>
 						)}
 					</AnimatePresence>
-				</div>
+				</div> */}
 			</motion.div>
 		</>
 	);
