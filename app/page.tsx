@@ -4,7 +4,6 @@ import { AboutPage } from "./components/pageParts/aboutPage";
 import Navbar from "./components/navigation/Navbar";
 import Circle from "./components/background/Circle";
 import { ContactPage } from "./components/pageParts/contactPage";
-import { ProjectsPage } from "./components/pageParts/projects/projectsPage";
 
 export default function Home() {
 	return (
