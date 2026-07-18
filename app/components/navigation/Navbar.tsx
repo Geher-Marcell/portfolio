@@ -86,18 +86,17 @@ const Navbar: React.FC = () => {
 										onClick={(event) =>
 											handleLinkClick(event, section.id)
 										}
-										className={`relative px-3 py-2 text-(--foreground-color)`}
+										className={`relative px-3 py-2`}
 										style={{
-											opacity:
-												section.id === currentPage
-													? 1
-													: 0.4,
 											fontWeight:
 												section.id === currentPage
 													? "bold"
 													: "normal",
-											transition:
-												"opacity 0.3s, font-weight 0.3s",
+											color:
+												section.id === currentPage
+													? "var(--foreground-color)"
+													: "var(--foreground-muted)",
+											transition: "font-weight 0.3s",
 										}}
 									>
 										{section.name}
@@ -118,11 +117,12 @@ const Navbar: React.FC = () => {
 					</div>
 				</div>
 				{/* Mobile View */}
-				{/* <div className="w-5/6 top-8 block sm:hidden">
-					<div className="flex sm:hidden items-center justify-end h-full">
+				<div className="top-8 block sm:hidden px-2 w-5/6 p-2">
+					<div className="flex items-center justify-end">
 						<motion.button
 							onClick={() => setIsOpen(!opened)}
-							className="space-y-2 *:w-7 *:h-0.5 *:bg-white p-2"
+							className="space-y-2 *:w-7 *:h-0.5 p-2"
+							style={{ color: "var(--foreground-color)" }}
 						>
 							<motion.div
 								className="origin-right"
@@ -131,12 +131,18 @@ const Navbar: React.FC = () => {
 									ease: "easeInOut",
 									duration: 0.3,
 								}}
+								style={{
+									backgroundColor: "var(--foreground-color)",
+								}}
 							></motion.div>
 							<motion.div
 								animate={{ scaleX: opened ? 0 : 1 }}
 								transition={{
 									ease: "easeInOut",
 									duration: 0.3,
+								}}
+								style={{
+									backgroundColor: "var(--foreground-color)",
 								}}
 							></motion.div>
 							<motion.div
@@ -146,6 +152,9 @@ const Navbar: React.FC = () => {
 									ease: "easeInOut",
 									duration: 0.3,
 								}}
+								style={{
+									backgroundColor: "var(--foreground-color)",
+								}}
 							></motion.div>
 						</motion.button>
 					</div>
@@ -153,29 +162,45 @@ const Navbar: React.FC = () => {
 						{opened && (
 							<motion.div
 								key="navMenu"
-								className="bg-inherit w-full -translate-y-2 -z-10 rounded-b-lg flex flex-col overflow-hidden"
-								initial={{ height: 0 }} // Initial state for the animation
-								animate={{ height: "10rem" }} // Animation when entering
-								exit={{ height: 0 }} // Animation when exiting
-								transition={{ duration: 0.3 }} // Add a transition for smooth animation
+								className="w-full rounded-b-lg flex flex-col overflow-hidden bg-neutral-900"
+								initial={{ height: 0 }}
+								animate={{ height: "auto" }}
+								exit={{ height: 0 }}
+								transition={{ duration: 0.3 }}
 							>
-								{links.map((link) => (
-									<React.Fragment key={link.href}>
+								{sections.map((section, index) => (
+									<React.Fragment key={section.id}>
 										<a
-											href={link.href}
+											href={section.id}
 											onClick={(event) =>
 												handleLinkClick(
 													event,
-													link.href,
+													section.id,
 												)
 											}
-											className={`relative px-3 py-2 text-(--foreground-color)`}
+											className="relative px-4 py-3 border-b border-neutral-800"
+											style={{
+												borderBottom:
+													index ===
+													sections.length - 1
+														? "none"
+														: undefined,
+												fontWeight:
+													section.id === currentPage
+														? "bold"
+														: "normal",
+												color:
+													section.id === currentPage
+														? "var(--foreground-color)"
+														: "var(--foreground-muted)",
+												transition: "font-weight 0.3s",
+											}}
 										>
-											{link.label}
-											{link.href === currentPage && (
+											{section.name}
+											{section.id === currentPage && (
 												<motion.div
 													layoutId="underline-mobile"
-													className="absolute top-0 bottom-0 left-0 w-1 bg-(--primary-color) rounded-full"
+													className="absolute top-0 bottom-0 left-0 w-1 bg-(--primary-color)/50 rounded-full"
 													transition={{
 														ease: "easeOut",
 														duration: 0.2,
@@ -188,7 +213,7 @@ const Navbar: React.FC = () => {
 							</motion.div>
 						)}
 					</AnimatePresence>
-				</div> */}
+				</div>
 			</motion.div>
 		</>
 	);

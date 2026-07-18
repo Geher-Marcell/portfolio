@@ -1,18 +1,26 @@
+"use client";
 import { Border } from "./components/background/Border";
 import { WelcomePage } from "./components/pageParts/welcomePage";
 import { AboutPage } from "./components/pageParts/aboutPage";
 import Navbar from "./components/navigation/Navbar";
 import Circle from "./components/background/Circle";
 import { ContactPage } from "./components/pageParts/contactPage";
+import { ScrollParallax } from "react-just-parallax";
+import { useRef } from "react";
 
 export default function Home() {
+	const scrollContainerRef = useRef<HTMLDivElement>(null);
+
 	return (
 		<>
 			<div className="relative overflow-hidden">
 				<div className="h-dvh w-full overflow-auto">
 					<Navbar />
 					<Border />
-					<div className="bg-(--background-color) h-dvh overflow-auto">
+					<div
+						ref={scrollContainerRef}
+						className="bg-(--background-color) h-dvh overflow-auto"
+					>
 						<main className="relative flex flex-col p-6 sm:p-16 gap-10">
 							<div className="absolute min-w-[calc(100dvw-8rem)] min-h-[calc(100dvh-8rem)]">
 								<Circle
