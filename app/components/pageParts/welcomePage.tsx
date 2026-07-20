@@ -102,7 +102,10 @@ export const WelcomePage = () => {
 						repeatDelay: 1,
 					}}
 				>
-					<DynamicFAIcon exportName="faCaretDown" />
+					<DynamicFAIcon
+						exportName="faCaretDown"
+						className="text-neutral-500"
+					/>
 				</motion.div>
 			</motion.div>
 		</>
