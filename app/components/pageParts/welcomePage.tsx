@@ -66,7 +66,7 @@ export const WelcomePage = () => {
 				</div>
 			</div>
 			{/* Subtitle */}
-			<div className="overflow-hidden pb-2">
+			<div className="overflow-hidden pb-2 -mt-4 md:mt-0">
 				<motion.p
 					className="text-2xl text-(--foreground-muted)"
 					initial={{ y: -100 }}
