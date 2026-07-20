@@ -4,9 +4,8 @@ import { WelcomePage } from "./components/pageParts/welcomePage";
 import { AboutPage } from "./components/pageParts/aboutPage";
 import Navbar from "./components/navigation/Navbar";
 import Circle from "./components/background/Circle";
-import { ContactPage } from "./components/pageParts/contactPage";
-import { ScrollParallax } from "react-just-parallax";
 import { useRef } from "react";
+import { ContactPage } from "./components/pageParts/contactPage";
 
 export default function Home() {
 	const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -67,8 +66,7 @@ export default function Home() {
 								id="aboutPage"
 								data-name="About"
 							>
-								{/* <AboutPage /> */}
-								<div className="h-[500px] border-green-500 border-2" />
+								<AboutPage />
 							</div>
 							<div
 								className="w-full px-10"
