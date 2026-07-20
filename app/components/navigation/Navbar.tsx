@@ -55,9 +55,16 @@ const Navbar: React.FC = () => {
 		targetId: string,
 	) => {
 		event.preventDefault();
-		const targetElement = document.querySelector(targetId);
-		if (targetElement) {
-			targetElement.scrollIntoView({ behavior: "smooth" });
+		if (sections.length > 0 && targetId === sections[0].id) {
+			const scrollContainer = document.querySelector(
+				".h-dvh.overflow-auto > main",
+			)?.parentElement;
+			scrollContainer?.scrollTo({ top: 0, behavior: "smooth" });
+		} else {
+			const targetElement = document.querySelector(targetId);
+			if (targetElement) {
+				targetElement.scrollIntoView({ behavior: "smooth" });
+			}
 		}
 	};
 

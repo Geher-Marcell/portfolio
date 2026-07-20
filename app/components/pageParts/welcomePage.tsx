@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "motion/react";
+import DynamicFAIcon from "../common/DynamicFaIcon";
 
 export const WelcomePage = () => {
 	const startDelay = 1.2;
@@ -79,6 +80,31 @@ export const WelcomePage = () => {
 					Full Stack Developer
 				</motion.p>
 			</div>
+			<motion.div
+				className="absolute flex flex-col items-center bottom-0 text-(--foreground-muted) mb-2 *:-m-1"
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{
+					delay: subtitleDelay + subtitleDuration,
+					duration: 0.5,
+					ease: subtitleEase,
+				}}
+			>
+				<span>Scroll</span>
+				<motion.div
+					initial={{ y: 0 }}
+					animate={{ y: [0, 5, 0] }}
+					transition={{
+						delay: subtitleDelay + subtitleDuration + 1,
+						duration: 1,
+						ease: "easeInOut",
+						repeat: Infinity,
+						repeatDelay: 1,
+					}}
+				>
+					<DynamicFAIcon exportName="faCaretDown" />
+				</motion.div>
+			</motion.div>
 		</>
 	);
 };
