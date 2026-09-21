@@ -2,6 +2,8 @@ import { motion } from "motion/react";
 import GitHubCalendar from "../common/GitHubCalendar";
 import { Card } from "../common/Card";
 import CountUp from "../common/CountUp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 const Cards = [
 	{ title: "Projects Built", value: 2 },
@@ -14,9 +16,15 @@ export const AboutPage = () => {
 	return (
 		<>
 			<div className="gap-4 flex flex-col items-center justify-between">
-				<Card className="max-w-300 text-justify">
-					<h1 className="font-bold mb-2">About me</h1>
-					<div className="pl-2">
+				<Card className="w-full text-justify">
+					<div className="flex items-center gap-2 mb-2">
+						<div className="w-8 h-0.5 rounded-xl bg-red-500" />
+						<h1 className="font-bold text-sm">About me</h1>
+					</div>
+					<h1 className="font-bold text-lg">
+						Engineering with precision.
+					</h1>
+					<div className="text-neutral-300 max-w-300">
 						Hi, I&apos;m Marcell Gehér and I build full-stack web
 						applications using <b>Next.js</b>! I develop modern,
 						responsive, and user-friendly web applications that
@@ -28,18 +36,30 @@ export const AboutPage = () => {
 				</Card>
 				<div className="w-full h-full xl:h-76 gap-4 flex flex-col xl:flex-row justify-center items-center">
 					<Card>
-						<h1 className="font-bold mb-2">Education</h1>
+						<h1 className="font-bold mb-4 text-xl">
+							<FontAwesomeIcon
+								icon={faGraduationCap}
+								className="text-red-300 mr-1 mb-0.5"
+							/>{" "}
+							Education
+						</h1>
 						<div className="pl-2">
-							<div className="relative flex flex-col gap-2 border-l-2 border-red-800/60 p-4">
-								<div className="w-4 h-4 -translate-x-1/2 absolute top-0 -left-px bg-red-800 rounded-full" />
-								<h1>Egyetem</h1>
-								<p>2026 - Present</p>
-								<p>Idk</p>
+							<div className="relative flex flex-col gap-2 border-l-2 border-gray-700 p-4">
+								<div className="w-4 h-4 -translate-x-1/2 absolute top-0 -left-px bg-red-700 rounded-full" />
+								<h1 className="font-bold">Óbudai Egyetem</h1>
+								<p className="text-neutral-400 -mt-2 text-sm">
+									2026 - Present
+								</p>
+								<p>Software Engineering BSc</p>
 							</div>
-							<div className="relative flex flex-col gap-2 border-l-2 border-red-800/60 p-4">
-								<div className="w-4 h-4 -translate-x-1/2 absolute top-0 -left-px bg-red-800 rounded-full" />
-								<h1>Jedlik Ányos Technikum</h1>
-								<p>2021 - 2026</p>
+							<div className="relative flex flex-col gap-2 border-l-2 border-gray-700 p-4">
+								<div className="w-4 h-4 -translate-x-1/2 absolute top-0 -left-px bg-red-700 rounded-full" />
+								<h1 className="font-bold">
+									Jedlik Ányos Technikum
+								</h1>
+								<p className="text-neutral-400 -mt-2 text-sm">
+									2021 - 2026
+								</p>
 								<p>
 									I was a student here studying computer
 									science.

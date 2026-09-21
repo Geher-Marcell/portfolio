@@ -81,8 +81,8 @@ export default function Home() {
 								id="contactPage"
 								data-name="Contact"
 							>
-								{/* <ContactPage /> */}
-								<div className="h-[500px] border-red-500 border-2" />
+								<ContactPage />
+								{/* <div className="h-[500px] border-red-500 border-2" /> */}
 							</div>
 						</main>
 					</div>
