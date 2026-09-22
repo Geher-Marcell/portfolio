@@ -6,10 +6,7 @@ import { TextAreaComponent } from "../InputFields/TextAreaComponent";
 import {
 	faArrowUpRightFromSquare,
 	faAt,
-	faLocation,
 	faLocationDot,
-	faMap,
-	faMarker,
 	faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import {

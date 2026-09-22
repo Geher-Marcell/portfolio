@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import GitHubCalendar from "../common/GitHubCalendar";
 import { Card } from "../common/Card";
 import CountUp from "../common/CountUp";
