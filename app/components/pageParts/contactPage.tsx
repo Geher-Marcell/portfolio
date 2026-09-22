@@ -186,7 +186,7 @@ export const ContactPage = () => {
 				</Card>
 
 				{/* Contact Form (Right side) */}
-				<Card className="w-7/12 space-y-6 p-8">
+				<Card className="w-7/12 space-y-6 p-8 h-fit">
 					<div>
 						<h1 className="text-2xl font-semibold">
 							Send a Message
