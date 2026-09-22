@@ -34,7 +34,7 @@ export const TextAreaComponent = (props: {
 				{label && (
 					<label
 						htmlFor={label}
-						className={`text-sm font-semibold text-white/70 ml-3 ${props.labelClassName || ""}`}
+						className={`text-sm font-semibold text-white/70 ${props.labelClassName || ""}`}
 					>
 						{label}
 					</label>
