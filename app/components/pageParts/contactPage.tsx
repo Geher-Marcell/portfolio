@@ -4,6 +4,7 @@ import { Card } from "../common/Card";
 import { InputComponent } from "../InputFields/InputComponent";
 import { TextAreaComponent } from "../InputFields/TextAreaComponent";
 import {
+	faArrowUpRightFromSquare,
 	faAt,
 	faLocation,
 	faLocationDot,
@@ -17,6 +18,7 @@ import {
 	faInstagram,
 	faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 
 export const ContactPage = () => {
 	return (
@@ -72,42 +74,116 @@ export const ContactPage = () => {
 							Social Media
 						</h1>
 						<div className="grid grid-cols-2 gap-4 opacity-70">
-							<Card className="flex items-center gap-2 text-lg">
-								<FontAwesomeIcon icon={faGithub} size="lg" />{" "}
-								<div>
-									<p className="text-sm text-neutral-400">
-										Github
-									</p>
-									<h5 className="text-lg">Geher-Marcell</h5>
+							<Link
+								href={"https://github.com/Geher-Marcell"}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="relative"
+							>
+								<div className="opacity-0 hover:opacity-100 transition duration-200 top-0 bottom-0 left-0 right-0 backdrop-blur-sm absolute rounded-lg flex items-center justify-center">
+									<FontAwesomeIcon
+										size="lg"
+										className="text-white"
+										icon={faArrowUpRightFromSquare}
+									/>
 								</div>
-							</Card>
-							<Card className="flex items-center gap-2 text-lg">
-								<FontAwesomeIcon icon={faLinkedin} size="lg" />{" "}
-								<div>
-									<p className="text-sm text-neutral-400">
-										LinkedIn
-									</p>
-									<h5 className="text-lg">Marcell Gehér</h5>
+								<Card className="flex items-center gap-2 text-lg">
+									<FontAwesomeIcon
+										icon={faGithub}
+										size="lg"
+									/>{" "}
+									<div>
+										<p className="text-sm text-neutral-400">
+											Github
+										</p>
+										<h5 className="text-lg">
+											Geher-Marcell
+										</h5>
+									</div>
+								</Card>
+							</Link>
+							<Link
+								href={
+									"https://www.linkedin.com/in/marcell-geh%C3%A9r/"
+								}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="relative"
+							>
+								<div className="opacity-0 hover:opacity-100 transition duration-200 top-0 bottom-0 left-0 right-0 backdrop-blur-sm absolute rounded-lg flex items-center justify-center">
+									<FontAwesomeIcon
+										size="lg"
+										className="text-white"
+										icon={faArrowUpRightFromSquare}
+									/>
 								</div>
-							</Card>
-							<Card className="flex items-center gap-2 text-lg">
-								<FontAwesomeIcon icon={faInstagram} size="lg" />{" "}
-								<div>
-									<p className="text-sm text-neutral-400">
-										Instagram
-									</p>
-									<h5 className="text-lg">TBA</h5>
+								<Card className="flex items-center gap-2 text-lg">
+									<FontAwesomeIcon
+										icon={faLinkedin}
+										size="lg"
+									/>{" "}
+									<div>
+										<p className="text-sm text-neutral-400">
+											LinkedIn
+										</p>
+										<h5 className="text-lg">
+											Marcell Gehér
+										</h5>
+									</div>
+								</Card>
+							</Link>
+							<Link
+								href={"https://www.instagram.com/"}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="relative"
+							>
+								<div className="opacity-0 hover:opacity-100 transition duration-200 top-0 bottom-0 left-0 right-0 backdrop-blur-sm absolute rounded-lg flex items-center justify-center">
+									<FontAwesomeIcon
+										size="lg"
+										className="text-white"
+										icon={faArrowUpRightFromSquare}
+									/>
 								</div>
-							</Card>
-							<Card className="flex items-center gap-2 text-lg">
-								<FontAwesomeIcon icon={faDiscord} size="lg" />{" "}
-								<div>
-									<p className="text-sm text-neutral-400">
-										Discord
-									</p>
-									<h5 className="text-lg">dark0ng</h5>
+								<Card className="flex items-center gap-2 text-lg">
+									<FontAwesomeIcon
+										icon={faInstagram}
+										size="lg"
+									/>{" "}
+									<div>
+										<p className="text-sm text-neutral-400">
+											Instagram
+										</p>
+										<h5 className="text-lg">TBA</h5>
+									</div>
+								</Card>
+							</Link>
+							<Link
+								href={"https://discord.com/"}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="relative"
+							>
+								<div className="opacity-0 hover:opacity-100 transition duration-200 top-0 bottom-0 left-0 right-0 backdrop-blur-sm absolute rounded-lg flex items-center justify-center">
+									<FontAwesomeIcon
+										size="lg"
+										className="text-white"
+										icon={faArrowUpRightFromSquare}
+									/>
 								</div>
-							</Card>
+								<Card className="flex items-center gap-2 text-lg">
+									<FontAwesomeIcon
+										icon={faDiscord}
+										size="lg"
+									/>{" "}
+									<div>
+										<p className="text-sm text-neutral-400">
+											Discord
+										</p>
+										<h5 className="text-lg">dark0ng</h5>
+									</div>
+								</Card>
+							</Link>
 						</div>
 					</Card>
 				</Card>
@@ -165,7 +241,6 @@ export const ContactPage = () => {
 							label={"Relevant Stack"}
 							value={""}
 							placeholder={"e.g. React, Next.js, Laravel"}
-							maxLength={50}
 							onChange={function (
 								e: React.ChangeEvent<HTMLInputElement>,
 							): void {
