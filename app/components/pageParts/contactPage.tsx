@@ -1,10 +1,11 @@
+"use client";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PrimaryButton } from "../Buttons";
 import { Card } from "../common/Card";
 import { InputComponent } from "../InputFields/InputComponent";
 import { TextAreaComponent } from "../InputFields/TextAreaComponent";
 import {
-	faArrowUpRightFromSquare,
 	faAt,
 	faLocationDot,
 	faPaperPlane,
@@ -15,13 +16,31 @@ import {
 	faInstagram,
 	faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-import Link from "next/link";
 import { SocialCard } from "../others/SocialCard";
 
 export const ContactPage = () => {
+	const [form, setForm] = useState({
+		name: "",
+		email: "",
+		jobType: "",
+		stack: "",
+		message: "",
+	});
+
+	const updateField =
+		(field: keyof typeof form) =>
+		(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+			setForm((prev) => ({ ...prev, [field]: e.target.value }));
+		};
+
+	// TODO: hook up a backend (API route / Formspree / etc.) to actually send it
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+	};
+
 	return (
 		<>
-			<div className="flex flex-col md:flex-row gap-8">
+			<div className="flex flex-col md:flex-row gap-2 md:gap-8">
 				{/* Contact Info (Left side) */}
 				<Card className="bg-transparent border-none w-full md:w-5/12 space-y-6 md:space-y-4">
 					<div className="flex items-center gap-2">
@@ -37,32 +56,34 @@ export const ContactPage = () => {
 						</p>
 					</div>
 					<Card className="flex items-center gap-2">
-						<FontAwesomeIcon icon={faAt} className="text-red-300" />
-						<div>
+						<FontAwesomeIcon icon={faAt} className="text-red-300 shrink-0" />
+						<div className="min-w-0">
 							<p className="text-xs md:text-sm text-neutral-400">
 								Primary Email Address
 							</p>
-							<h5 className="text-base md:text-lg">darkiex03@gmail.com</h5>
+							<h5 className="text-base md:text-lg wrap-break-words">
+								darkiex03@gmail.com
+							</h5>
 						</div>
 					</Card>
 					<Card className="flex items-center gap-2">
 						<FontAwesomeIcon
 							icon={faLocationDot}
 							size="lg"
-							className="text-blue-300 mr-1"
+							className="text-blue-300 mr-1 shrink-0"
 						/>
-						<div>
+						<div className="min-w-0">
 							<p className="text-xs md:text-sm text-neutral-400">
 								Location & Zone
 							</p>
-							<h5 className="text-base md:text-lg">
+							<h5 className="text-base md:text-lg wrap-break-words">
 								Budapest, Hungary ● UTC+1
 							</h5>
 						</div>
 					</Card>
 					<Card className="bg-transparent border-none space-y-4 w-full">
 						<h1 className="text-sm text-neutral-400">Social Media</h1>
-						<div className="grid grid-cols-2 gap-4 opacity-70">
+						<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 opacity-70">
 							<SocialCard
 								href={"https://github.com/Geher-Marcell"}
 								icon={faGithub}
@@ -92,84 +113,64 @@ export const ContactPage = () => {
 				</Card>
 
 				{/* Contact Form (Right side) */}
-				{/* <Card className="w-7/12 space-y-6 p-8 h-fit">
+				<Card className="w-full md:w-7/12 space-y-6 p-4 sm:p-8 h-fit">
 					<div>
-						<h1 className="text-2xl font-semibold">
-							Send a Message
-						</h1>
+						<h1 className="text-2xl font-semibold">Send a Message</h1>
 						<p className="text-neutral-400 text-sm">
-							Fill out the form below to send a message. I will
-							get back to you as soon as possible.
+							Fill out the form below to send a message. I will get back to you
+							as soon as possible.
 						</p>
 					</div>
 
-					<div className="flex items-center justify-evenly *:w-full gap-10">
-						<InputComponent
-							label={"Name"}
-							value={""}
-							placeholder={"Enter your name"}
-							onChange={function (
-								e: React.ChangeEvent<HTMLInputElement>,
-							): void {
-								throw new Error("Function not implemented.");
-							}}
-						/>
-						<InputComponent
-							label={"Email"}
-							value={""}
-							placeholder={"Enter your email"}
-							onChange={function (
-								e: React.ChangeEvent<HTMLInputElement>,
-							): void {
-								throw new Error("Function not implemented.");
-							}}
-						/>
-					</div>
+					<form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
+						<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+							<InputComponent
+								label={"Name"}
+								value={form.name}
+								placeholder={"Enter your name"}
+								autoComplete="name"
+								onChange={updateField("name")}
+							/>
+							<InputComponent
+								label={"Email"}
+								type="email"
+								value={form.email}
+								placeholder={"Enter your email"}
+								autoComplete="email"
+								onChange={updateField("email")}
+							/>
+						</div>
 
-					<div className="flex items-center justify-evenly *:w-full gap-10">
-						<InputComponent
-							label={"Job Type"}
-							value={""}
-							placeholder={
-								"e.g. Job-related, Freelance, Internship"
-							}
-							onChange={function (
-								e: React.ChangeEvent<HTMLInputElement>,
-							): void {
-								throw new Error("Function not implemented.");
-							}}
+						<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+							<InputComponent
+								label={"Job Type"}
+								value={form.jobType}
+								placeholder={"e.g. Job-related, Freelance, Internship"}
+								onChange={updateField("jobType")}
+							/>
+							<InputComponent
+								label={"Relevant Stack"}
+								value={form.stack}
+								placeholder={"e.g. React, Next.js, Laravel"}
+								onChange={updateField("stack")}
+							/>
+						</div>
+
+						<TextAreaComponent
+							label={"Message"}
+							placeholder="A brief description of project requirements, timeline or context..."
+							maxLength={500}
+							rows={4}
+							value={form.message}
+							onChange={updateField("message")}
 						/>
 
-						<InputComponent
-							label={"Relevant Stack"}
-							value={""}
-							placeholder={"e.g. React, Next.js, Laravel"}
-							onChange={function (
-								e: React.ChangeEvent<HTMLInputElement>,
-							): void {
-								throw new Error("Function not implemented.");
-							}}
-						/>
-					</div>
-
-					<TextAreaComponent
-						label={"Message"}
-						placeholder="A brief description of project requirements, timeline or context..."
-						maxLength={500}
-						value={""}
-						onChange={function (
-							e: React.ChangeEvent<HTMLTextAreaElement>,
-						): void {
-							throw new Error("Function not implemented.");
-						}}
-					/>
-
-					<PrimaryButton className="w-full gap-2 p-4">
-						{" "}
-						<FontAwesomeIcon icon={faPaperPlane} /> Send
-						Message{" "}
-					</PrimaryButton>
-				</Card> */}
+						<PrimaryButton type="submit" className="w-full gap-2 p-4">
+							{" "}
+							<FontAwesomeIcon icon={faPaperPlane} /> Send Message{" "}
+						</PrimaryButton>
+					</form>
+				</Card>
 			</div>
 		</>
 	);

@@ -18,19 +18,21 @@ export const SocialCard = (props: SocialCardProps) => {
 				href={props.href}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="relative">
-				<div className="opacity-0 hover:opacity-100 transition duration-200 top-0 bottom-0 left-0 right-0 backdrop-blur-sm absolute rounded-lg flex items-center justify-center">
+				className="group relative block">
+				<div className="pointer-events-none opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100 transition duration-200 absolute inset-0 backdrop-blur-sm rounded-lg flex items-center justify-center">
 					<FontAwesomeIcon
 						size="lg"
 						className="text-white"
 						icon={faArrowUpRightFromSquare}
 					/>
 				</div>
-				<Card className="flex items-center gap-2 text-lg">
-					<FontAwesomeIcon icon={props.icon} size="lg" />{" "}
-					<div>
-						<p className="text-sm text-neutral-400">{props.title}</p>
-						<h5 className="text-lg">{props.description}</h5>
+				<Card className="flex items-center gap-3 text-lg">
+					<FontAwesomeIcon icon={props.icon} size="lg" className="shrink-0" />
+					<div className="min-w-0">
+						<p className="text-sm text-neutral-400 truncate">{props.title}</p>
+						<h5 className="text-base md:text-lg truncate">
+							{props.description}
+						</h5>
 					</div>
 				</Card>
 			</Link>
