@@ -20,7 +20,7 @@ export default function Home() {
 						ref={scrollContainerRef}
 						className="bg-(--background-color) h-dvh overflow-auto"
 					>
-						<main className="relative flex flex-col p-6 sm:p-16 gap-10">
+						<main className="relative flex flex-col p-2 sm:p-16 gap-10">
 							<div className="absolute min-w-[calc(100dvw-8rem)] min-h-[calc(100dvh-8rem)]">
 								<Circle
 									backgroundGradient="radial-gradient(circle, #a52727ff, #a13a20ff)"
