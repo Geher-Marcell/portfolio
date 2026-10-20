@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "motion/react";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 interface NavbarProps {
 	id: string;
@@ -79,8 +79,7 @@ const Navbar: React.FC = () => {
 					duration: animDuration,
 					ease: "easeOut",
 				}}
-				className="*:max-w-140  *:bg-neutral-900 *:absolute *:left-1/2 *:-translate-x-1/2 *:rounded-2xl *:shadow-lg *:z-50 *:border *:border-neutral-700"
-			>
+				className="*:max-w-140  *:bg-neutral-900 *:absolute *:left-1/2 *:-translate-x-1/2 *:rounded-2xl *:shadow-lg *:z-50 *:border *:border-neutral-700">
 				{/* Desktop View */}
 				<div className="top-14 hidden sm:block py-1 px-2">
 					<div className="flex justify-center items-center">
@@ -89,22 +88,17 @@ const Navbar: React.FC = () => {
 								<React.Fragment key={section.id}>
 									<a
 										href={section.id}
-										onClick={(event) =>
-											handleLinkClick(event, section.id)
-										}
+										onClick={(event) => handleLinkClick(event, section.id)}
 										className={`relative px-3 py-2`}
 										style={{
 											fontWeight:
-												section.id === currentPage
-													? "bold"
-													: "normal",
+												section.id === currentPage ? "bold" : "normal",
 											color:
 												section.id === currentPage
 													? "var(--foreground-color)"
 													: "var(--foreground-muted)",
 											transition: "font-weight 0.3s",
-										}}
-									>
+										}}>
 										{section.name}
 										{section.id === currentPage && (
 											<motion.div
@@ -128,8 +122,7 @@ const Navbar: React.FC = () => {
 						<motion.button
 							onClick={() => setIsOpen(!opened)}
 							className="space-y-2 *:w-7 *:h-0.5 p-2"
-							style={{ color: "var(--foreground-color)" }}
-						>
+							style={{ color: "var(--foreground-color)" }}>
 							<motion.div
 								className="origin-right"
 								animate={{ rotate: opened ? -45 : 0 }}
@@ -139,8 +132,7 @@ const Navbar: React.FC = () => {
 								}}
 								style={{
 									backgroundColor: "var(--foreground-color)",
-								}}
-							></motion.div>
+								}}></motion.div>
 							<motion.div
 								animate={{ scaleX: opened ? 0 : 1 }}
 								transition={{
@@ -149,8 +141,7 @@ const Navbar: React.FC = () => {
 								}}
 								style={{
 									backgroundColor: "var(--foreground-color)",
-								}}
-							></motion.div>
+								}}></motion.div>
 							<motion.div
 								className="origin-right"
 								animate={{ rotate: opened ? 45 : 0 }}
@@ -160,8 +151,7 @@ const Navbar: React.FC = () => {
 								}}
 								style={{
 									backgroundColor: "var(--foreground-color)",
-								}}
-							></motion.div>
+								}}></motion.div>
 						</motion.button>
 					</div>
 					<AnimatePresence>
@@ -172,36 +162,24 @@ const Navbar: React.FC = () => {
 								initial={{ height: 0 }}
 								animate={{ height: "auto" }}
 								exit={{ height: 0 }}
-								transition={{ duration: 0.3 }}
-							>
+								transition={{ duration: 0.3 }}>
 								{sections.map((section, index) => (
 									<React.Fragment key={section.id}>
 										<a
 											href={section.id}
-											onClick={(event) =>
-												handleLinkClick(
-													event,
-													section.id,
-												)
-											}
+											onClick={(event) => handleLinkClick(event, section.id)}
 											className="relative px-4 py-3 border-b border-neutral-800"
 											style={{
 												borderBottom:
-													index ===
-													sections.length - 1
-														? "none"
-														: undefined,
+													index === sections.length - 1 ? "none" : undefined,
 												fontWeight:
-													section.id === currentPage
-														? "bold"
-														: "normal",
+													section.id === currentPage ? "bold" : "normal",
 												color:
 													section.id === currentPage
 														? "var(--foreground-color)"
 														: "var(--foreground-muted)",
 												transition: "font-weight 0.3s",
-											}}
-										>
+											}}>
 											{section.name}
 											{section.id === currentPage && (
 												<motion.div
