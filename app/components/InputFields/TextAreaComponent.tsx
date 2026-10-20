@@ -53,7 +53,7 @@ export const TextAreaComponent = (props: {
 				<textarea
 					name={name ?? label}
 					placeholder={placeholder}
-					value={value || undefined}
+					value={value}
 					onChange={onChange}
 					rows={rows}
 					maxLength={maxLength}
