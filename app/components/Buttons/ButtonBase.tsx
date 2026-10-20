@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, MouseEventHandler } from "react";
-import { twMerge } from "tailwind-merge";
+import { buildButtonClassName } from "../utils/classMerger";
 
 export type AppButtonProps = Omit<
 	ButtonHTMLAttributes<HTMLButtonElement>,
@@ -12,10 +12,6 @@ export type AppButtonProps = Omit<
 
 type ButtonBaseProps = AppButtonProps & {
 	defaultClassName: string;
-};
-
-const buildButtonClassName = (defaultClassName: string, className?: string) => {
-	return twMerge(defaultClassName, className);
 };
 
 const ButtonBase = ({

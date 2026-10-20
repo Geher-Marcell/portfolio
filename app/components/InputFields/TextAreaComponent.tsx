@@ -1,5 +1,6 @@
 "use client";
 import type { ReactNode } from "react";
+import { buildButtonClassName } from "../utils/classMerger";
 
 export const TextAreaComponent = (props: {
 	label?: string;
@@ -28,14 +29,17 @@ export const TextAreaComponent = (props: {
 		ignorePasswordManager,
 	} = props;
 
+	const labelClass = "text-sm font-semibold text-white/70";
+	const textAreaClass =
+		"w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/50 outline-none focus:border-white/20";
+
 	return (
 		<div>
 			<div className="flex items-center justify-between px-3">
 				{label && (
 					<label
 						htmlFor={label}
-						className={`text-sm font-semibold text-white/70 ${props.labelClassName || ""}`}
-					>
+						className={buildButtonClassName(labelClass, props.labelClassName)}>
 						{label}
 					</label>
 				)}
@@ -54,10 +58,12 @@ export const TextAreaComponent = (props: {
 					rows={rows}
 					maxLength={maxLength}
 					autoComplete={
-						autoComplete ??
-						(ignorePasswordManager ? "off" : undefined)
+						autoComplete ?? (ignorePasswordManager ? "off" : undefined)
 					}
-					className={`w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/50 outline-none focus:border-white/20 ${props.textAreaClassName || ""}`}
+					className={buildButtonClassName(
+						textAreaClass,
+						props.textAreaClassName,
+					)}
 					data-bwignore={ignorePasswordManager ? "true" : undefined}
 					data-lpignore={ignorePasswordManager ? "true" : undefined}
 					data-1p-ignore={ignorePasswordManager ? "true" : undefined}
