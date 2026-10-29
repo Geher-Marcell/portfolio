@@ -6,6 +6,7 @@ import Navbar from "./components/navigation/Navbar";
 import Circle from "./components/background/Circle";
 import { useRef } from "react";
 import { ContactPage } from "./components/pageParts/contactPage";
+import { ProjectsPage } from "./components/pageParts/projectPage";
 
 export default function Home() {
 	const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -18,8 +19,7 @@ export default function Home() {
 					<Border />
 					<div
 						ref={scrollContainerRef}
-						className="bg-(--background-color) h-dvh overflow-auto"
-					>
+						className="bg-(--background-color) h-dvh overflow-auto">
 						<main className="relative flex flex-col p-2 sm:p-16 gap-10">
 							<div className="absolute min-w-[calc(100dvw-8rem)] min-h-[calc(100dvh-8rem)]">
 								<Circle
@@ -52,35 +52,25 @@ export default function Home() {
 									size={120}
 								/>
 							</div>
-							<div
-								className="w-full h-full"
-								id="homePage"
-								data-name="Home"
-							>
+							<div className="w-full h-full" id="homePage" data-name="Home">
 								<div className="relative flex min-h-[calc(100dvh-5rem)] w-full flex-col sm:min-h-[calc(100dvh-8rem)] sm:py-8 items-center justify-center border-b border-(--foreground-color)/10">
 									<WelcomePage />
 								</div>
 							</div>
-							<div
-								className="px-10 w-full"
-								id="aboutPage"
-								data-name="About"
-							>
+							<div className="px-10 w-full" id="aboutPage" data-name="About">
 								<AboutPage />
 							</div>
 							<div
 								className="w-full px-10"
 								id="projectsPage"
-								data-name="Projects"
-							>
-								{/* Projects Page goes here */}
-								<div className="h-[800px] border-amber-500 border-2" />
+								data-name="Projects">
+								<ProjectsPage />
+								{/* <div className="h-[800px] border-amber-500 border-2" /> */}
 							</div>
 							<div
 								className="w-full px-10"
 								id="contactPage"
-								data-name="Contact"
-							>
+								data-name="Contact">
 								<ContactPage />
 								{/* <div className="h-[500px] border-red-500 border-2" /> */}
 							</div>
