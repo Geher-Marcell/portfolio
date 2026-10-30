@@ -7,9 +7,14 @@ import Circle from "./components/background/Circle";
 import { useRef } from "react";
 import { ContactPage } from "./components/pageParts/contactPage";
 import { ProjectsPage } from "./components/pageParts/projectPage";
+import { useHashScroll } from "./components/utils/useHashScroll";
 
 export default function Home() {
 	const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+	// The page scrolls inside a nested container, not the window, so the
+	// browser's native hash scrolling misses when arriving from another route.
+	useHashScroll(scrollContainerRef);
 
 	return (
 		<>
@@ -52,26 +57,32 @@ export default function Home() {
 									size={120}
 								/>
 							</div>
-							<div className="w-full h-full" id="homePage" data-name="Home">
+							<section
+								className="w-full h-full"
+								id="homePage"
+								aria-label="Introduction">
 								<div className="relative flex min-h-[calc(100dvh-5rem)] w-full flex-col sm:min-h-[calc(100dvh-8rem)] sm:py-8 items-center justify-center border-b border-(--foreground-color)/10">
 									<WelcomePage />
 								</div>
-							</div>
-							<div className="px-10 w-full" id="aboutPage" data-name="About">
+							</section>
+							<section
+								className="px-10 w-full"
+								id="aboutPage"
+								aria-label="About">
 								<AboutPage />
-							</div>
-							<div
+							</section>
+							<section
 								className="w-full px-10"
 								id="projectsPage"
-								data-name="Projects">
+								aria-label="Projects">
 								<ProjectsPage />
-							</div>
-							<div
+							</section>
+							<section
 								className="w-full px-10"
 								id="contactPage"
-								data-name="Contact">
+								aria-label="Contact">
 								<ContactPage />
-							</div>
+							</section>
 						</main>
 					</div>
 				</div>

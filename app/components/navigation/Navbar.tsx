@@ -1,31 +1,22 @@
 "use client";
 import { AnimatePresence, motion } from "motion/react";
 import React, { useState } from "react";
-
-interface NavbarProps {
-	id: string;
-	name: string;
-}
+import { SECTIONS } from "./sections";
 
 const Navbar: React.FC = () => {
 	const animDelay = 1.2;
 	const animDuration = 0.6;
 
-	const [currentPage, setCurrentPage] = useState<string>("#homePage");
+	const sections = SECTIONS;
+
+	const [currentPage, setCurrentPage] = useState<string>(sections[0].id);
 
 	const [opened, setIsOpen] = useState(false);
 
-	const [sections, setSections] = useState<NavbarProps[]>([]);
-
 	React.useEffect(() => {
-		const objects = document.querySelectorAll("[data-name]");
-		const collected: NavbarProps[] = [];
-		for (const obj of objects) {
-			const name = obj.getAttribute("data-name") || "Unknown";
-			const id = "#" + obj.getAttribute("id");
-			collected.push({ id, name });
-		}
-		setSections(collected);
+		const objects = sections
+			.map((section) => document.querySelector(section.id))
+			.filter((obj): obj is Element => obj !== null);
 
 		const visible = new Map<string, boolean>();
 
@@ -34,7 +25,7 @@ const Navbar: React.FC = () => {
 				for (const entry of entries) {
 					visible.set("#" + entry.target.id, entry.isIntersecting);
 				}
-				const firstVisible = collected.find((s) => visible.get(s.id));
+				const firstVisible = sections.find((s) => visible.get(s.id));
 				if (firstVisible) {
 					setCurrentPage(firstVisible.id);
 				}
@@ -47,7 +38,7 @@ const Navbar: React.FC = () => {
 		}
 
 		return () => observer.disconnect();
-	}, []);
+	}, [sections]);
 
 	// Smooth scrolling to section and preventing default behavior
 	const handleLinkClick = (
@@ -70,8 +61,9 @@ const Navbar: React.FC = () => {
 
 	return (
 		<>
-			<motion.div
+			<motion.nav
 				id="navbar"
+				aria-label="Primary"
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{
@@ -198,7 +190,7 @@ const Navbar: React.FC = () => {
 						)}
 					</AnimatePresence>
 				</div>
-			</motion.div>
+			</motion.nav>
 		</>
 	);
 };

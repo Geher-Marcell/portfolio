@@ -38,7 +38,7 @@ export const TextAreaComponent = (props: {
 			<div className="flex items-center justify-between px-3">
 				{label && (
 					<label
-						htmlFor={label}
+						htmlFor={"inp" + (name ?? label)}
 						className={buildButtonClassName(labelClass, props.labelClassName)}>
 						{label}
 					</label>
@@ -52,6 +52,7 @@ export const TextAreaComponent = (props: {
 			<div className={`${absoluteChildren ? "relative" : "block"}`}>
 				<textarea
 					name={name ?? label}
+					id={"inp" + (name ?? label)}
 					placeholder={placeholder}
 					value={value}
 					onChange={onChange}

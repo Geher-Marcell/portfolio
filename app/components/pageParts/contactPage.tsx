@@ -122,10 +122,10 @@ export const ContactPage = () => {
 				<Card className="bg-transparent border-none w-full lg:w-5/12 space-y-6 lg:space-y-4">
 					<div className="flex items-center gap-2">
 						<div className="bg-red-700 w-8 h-0.5 rounded-xl" />
-						<h1 className="font-bold text-sm">Direct Comm Channel</h1>
+						<p className="font-bold text-sm">Direct Comm Channel</p>
 					</div>
 					<div>
-						<h1 className="text-3xl lg:text-4xl font-bold">Get in Touch</h1>
+						<h2 className="text-3xl lg:text-4xl font-bold">Get in Touch</h2>
 						<p className="text-neutral-400 text-sm lg:text-base">
 							Interested in hiring me as a junior developer or collaborating on
 							a project? Feel free to reach out to me via the contact form or
@@ -138,9 +138,9 @@ export const ContactPage = () => {
 							<p className="text-xs lg:text-sm text-neutral-400">
 								Primary Email Address
 							</p>
-							<h5 className="text-base lg:text-lg wrap-break-words">
+							<p className="text-base lg:text-lg wrap-break-words">
 								darkiex03@gmail.com
-							</h5>
+							</p>
 						</div>
 					</Card>
 					<Card className="flex items-center gap-2">
@@ -153,13 +153,13 @@ export const ContactPage = () => {
 							<p className="text-xs lg:text-sm text-neutral-400">
 								Location & Zone
 							</p>
-							<h5 className="text-base lg:text-lg wrap-break-words">
+							<p className="text-base lg:text-lg wrap-break-words">
 								Budapest, Hungary ● UTC+1
-							</h5>
+							</p>
 						</div>
 					</Card>
 					<Card className="bg-transparent border-none space-y-4 w-full">
-						<h1 className="text-sm text-neutral-400">Social Media</h1>
+						<p className="text-sm text-neutral-400">Social Media</p>
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 opacity-70">
 							<SocialCard
 								href={"https://github.com/Geher-Marcell"}
@@ -193,7 +193,7 @@ export const ContactPage = () => {
 				<Card className="w-full lg:w-7/12 space-y-6 p-4 sm:p-8 h-fit">
 					<div>
 						<div className="flex items-baseline gap-2">
-							<h1 className="text-2xl font-semibold">Send a Message</h1>
+							<h2 className="text-2xl font-semibold">Send a Message</h2>
 							{status === "sent" && (
 								<p className="text-sm text-green-400" role="status">
 									Thanks for reaching out — I&apos;ll get back to you as soon as
@@ -224,7 +224,10 @@ export const ContactPage = () => {
 						</p>
 					</div>
 
-					<form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
+					<form
+						onSubmit={handleSubmit}
+						aria-label="Contact form"
+						className="space-y-4 lg:space-y-6">
 						<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
 							<InputComponent
 								label={"Name"}

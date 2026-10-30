@@ -19,23 +19,24 @@ export const WelcomePage = () => {
 
 	return (
 		<>
-			<div className="text-[12vw] sm:text-6xl font-bold *:inline-block flex items-center justify-center w-full h-full">
+			<h1 className="text-[12vw] sm:text-6xl font-bold flex items-center justify-center w-full h-full">
 				{/* Vezetéknév */}
-				<div className="h-min w-min overflow-hidden">
-					<motion.h1
+				<span className="h-min w-min overflow-hidden">
+					<motion.span
+						className="inline-block"
 						initial={{ x: "100%" }}
 						animate={{ x: 0 }}
 						transition={{
 							duration: namesDuration,
 							delay: namesDelay,
 							ease: namesEase,
-						}}
-					>
+						}}>
 						Gehér
-					</motion.h1>
-				</div>
+					</motion.span>
+				</span>
 				{/* Elválasztó */}
-				<motion.div
+				<motion.span
+					aria-hidden="true"
 					className="w-0.5 bg-(--foreground-color) mx-1 sm:mx-1.5"
 					initial={{
 						height: "0px",
@@ -50,21 +51,22 @@ export const WelcomePage = () => {
 						ease: seperatorEase,
 					}}
 				/>
+				{/* Explicit space so the accessible/DOM text reads "Gehér Marcell" */}{" "}
 				{/* Keresztnév */}
-				<div className="h-min w-min overflow-hidden">
-					<motion.h1
+				<span className="h-min w-min overflow-hidden">
+					<motion.span
+						className="inline-block"
 						initial={{ x: "-100%" }}
 						animate={{ x: 0 }}
 						transition={{
 							duration: namesDuration,
 							delay: namesDelay,
 							ease: namesEase,
-						}}
-					>
+						}}>
 						Marcell
-					</motion.h1>
-				</div>
-			</div>
+					</motion.span>
+				</span>
+			</h1>
 			{/* Subtitle */}
 			<div className="overflow-hidden pb-2 -mt-4 md:mt-0">
 				<motion.p
@@ -75,8 +77,7 @@ export const WelcomePage = () => {
 						delay: subtitleDelay,
 						duration: subtitleDuration,
 						ease: subtitleEase,
-					}}
-				>
+					}}>
 					Full Stack Developer
 				</motion.p>
 			</div>
@@ -88,8 +89,7 @@ export const WelcomePage = () => {
 					delay: subtitleDelay + subtitleDuration,
 					duration: 0.5,
 					ease: subtitleEase,
-				}}
-			>
+				}}>
 				<span>Scroll</span>
 				<motion.div
 					initial={{ y: 0 }}
@@ -100,8 +100,7 @@ export const WelcomePage = () => {
 						ease: "easeInOut",
 						repeat: Infinity,
 						repeatDelay: 1,
-					}}
-				>
+					}}>
 					<DynamicFAIcon
 						exportName="faCaretDown"
 						className="text-neutral-500"

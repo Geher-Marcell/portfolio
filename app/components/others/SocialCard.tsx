@@ -17,7 +17,7 @@ export const SocialCard = (props: SocialCardProps) => {
 			<Link
 				href={props.href}
 				target="_blank"
-				rel="noopener noreferrer"
+				rel="me noopener noreferrer"
 				className="group relative block">
 				<div className="pointer-events-none opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100 transition duration-200 absolute inset-0 backdrop-blur-sm rounded-lg flex items-center justify-center">
 					<FontAwesomeIcon
@@ -30,9 +30,9 @@ export const SocialCard = (props: SocialCardProps) => {
 					<FontAwesomeIcon icon={props.icon} size="lg" className="shrink-0" />
 					<div className="min-w-0">
 						<p className="text-sm text-neutral-400 truncate">{props.title}</p>
-						<h5 className="text-base md:text-lg truncate">
+						<p className="text-base md:text-lg truncate">
 							{props.description}
-						</h5>
+						</p>
 					</div>
 				</Card>
 			</Link>

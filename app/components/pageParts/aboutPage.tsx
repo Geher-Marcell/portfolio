@@ -1,6 +1,7 @@
 import GitHubCalendar from "../common/GitHubCalendar";
 import { Card } from "../common/Card";
 import CountUp from "../common/CountUp";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,9 +19,9 @@ export const AboutPage = () => {
 				<Card className="w-full text-justify space-y-4">
 					<div className="flex items-center gap-2 mb-2">
 						<div className="w-8 h-0.5 rounded-xl bg-red-500" />
-						<h1 className="font-bold text-sm">About me</h1>
+						<p className="font-bold text-sm">About me</p>
 					</div>
-					<h1 className="font-bold text-lg">Engineering with precision.</h1>
+					<h2 className="font-bold text-lg">Engineering with precision.</h2>
 					<div className="text-neutral-300 max-w-300 ml-6 border-l-4 border-red-800 pl-2">
 						Hi, I&apos;m <b>Marcell Gehér</b> and I build full-stack web
 						applications using <b>Next.js</b>! I develop modern, responsive, and
@@ -32,35 +33,35 @@ export const AboutPage = () => {
 				</Card>
 				<div className="w-full h-full xl:h-76 gap-4 flex flex-wrap xl:flex-row justify-center items-center xl:justify-between">
 					<Card className="w-full xl:w-1/2 h-full space-y-4">
-						<h1 className="font-bold text-xl">
+						<h2 className="font-bold text-xl">
 							<FontAwesomeIcon
 								icon={faGraduationCap}
 								className="text-red-300 mr-1 mb-0.5"
 							/>{" "}
 							Education
-						</h1>
+						</h2>
 						<div className="pl-2">
 							<div className="relative flex flex-col gap-2 border-l-2 border-gray-700 p-4">
 								<div className="w-4 h-4 -translate-x-1/2 absolute top-0 -left-px bg-red-700 rounded-full" />
-								<h1 className="font-bold">Óbudai Egyetem</h1>
+								<h3 className="font-bold">Óbudai Egyetem</h3>
 								<p className="text-neutral-400 -mt-2 text-sm">2026 - Present</p>
 								<p>Software Engineering BSc</p>
 							</div>
 							<div className="relative flex flex-col gap-2 border-l-2 border-gray-700 p-4">
 								<div className="w-4 h-4 -translate-x-1/2 absolute top-0 -left-px bg-red-700 rounded-full" />
-								<h1 className="font-bold">Jedlik Ányos Technikum</h1>
+								<h3 className="font-bold">Jedlik Ányos Technikum</h3>
 								<p className="text-neutral-400 -mt-2 text-sm">2021 - 2026</p>
 								<p>I was a student here studying computer science.</p>
 							</div>
 						</div>
 					</Card>
 					<Card className="h-76 w-full md:w-fit flex items-center justify-center">
-						<img
-							loading="lazy"
+						<Image
 							src="https://placehold.co/180x270"
-							alt="Profile Picture"
+							alt="Portrait of Marcell Gehér, full stack web developer"
 							width={180}
 							height={270}
+							unoptimized
 						/>
 					</Card>
 					<div className="w-full md:w-fit h-full xl:h-76 grid grid-cols-2 gap-4">
@@ -68,9 +69,9 @@ export const AboutPage = () => {
 							<Card
 								className="w-40 h-28 md:w-40 lg:w-60 lg:h-36 mx-auto flex flex-col justify-center items-center"
 								key={index}>
-								<h1 className="text-red-500 font-bold text-4xl md:text-5xl">
+								<p className="text-red-500 font-bold text-4xl md:text-5xl">
 									<CountUp target={card.value} suffix={card.suffix} />
-								</h1>
+								</p>
 								<p className="text-neutral-400 text-sm text-nowrap">
 									{card.title}
 								</p>
@@ -79,7 +80,7 @@ export const AboutPage = () => {
 					</div>
 				</div>
 				<Card className="w-full flex flex-col justify-center items-center">
-					<h1 className="font-bold mb-2 self-start">Github Contributions</h1>
+					<h2 className="font-bold mb-2 self-start">Github Contributions</h2>
 					<div className="w-full xl:w-fit">
 						<GitHubCalendar
 							username="Geher-Marcell"
