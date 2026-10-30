@@ -22,7 +22,7 @@ export const AboutPage = () => {
 						<p className="font-bold text-sm">About me</p>
 					</div>
 					<h2 className="font-bold text-lg">Engineering with precision.</h2>
-					<div className="text-neutral-300 max-w-300 ml-6 border-l-4 border-red-800 pl-2">
+					<div className="text-neutral-300 max-w-300 ml-0 md:ml-6 border-none md:border-l-4 border-red-800 px-2">
 						Hi, I&apos;m <b>Marcell Gehér</b> and I build full-stack web
 						applications using <b>Next.js</b>! I develop modern, responsive, and
 						user-friendly web applications that solve real problems. I&apos;m
@@ -32,7 +32,7 @@ export const AboutPage = () => {
 					</div>
 				</Card>
 				<div className="w-full h-full xl:h-76 gap-4 flex flex-wrap xl:flex-row justify-center items-center xl:justify-between">
-					<Card className="w-full xl:w-1/2 h-full space-y-4">
+					<Card className="w-full xl:flex-1 xl:min-w-0 h-full space-y-4">
 						<h2 className="font-bold text-xl">
 							<FontAwesomeIcon
 								icon={faGraduationCap}
@@ -64,10 +64,10 @@ export const AboutPage = () => {
 							unoptimized
 						/>
 					</Card>
-					<div className="w-full md:w-fit h-full xl:h-76 grid grid-cols-2 gap-4">
+					<div className="w-full md:flex-1 md:min-w-0 lg:flex-none lg:w-fit h-full md:h-76 grid grid-cols-2 gap-4">
 						{Cards.map((card, index) => (
 							<Card
-								className="w-40 h-28 md:w-40 lg:w-60 lg:h-36 mx-auto flex flex-col justify-center items-center"
+								className="w-full h-28 md:h-36 lg:w-60 xl:w-44 flex flex-col justify-center items-center"
 								key={index}>
 								<p className="text-red-500 font-bold text-4xl md:text-5xl">
 									<CountUp target={card.value} suffix={card.suffix} />
@@ -92,6 +92,7 @@ export const AboutPage = () => {
 						/>
 					</div>
 				</Card>
+				<div className="h-96"></div>
 			</div>
 		</>
 	);

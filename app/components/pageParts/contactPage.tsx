@@ -117,7 +117,7 @@ export const ContactPage = () => {
 
 	return (
 		<>
-			<div className="flex flex-col lg:flex-row gap-2 lg:gap-8">
+			<div className="flex flex-col lg:flex-row gap-2 lg:gap-8 pb-10 md:pb-0">
 				{/* Contact Info (Left side) */}
 				<Card className="bg-transparent border-none w-full lg:w-5/12 space-y-6 lg:space-y-4">
 					<div className="flex items-center gap-2">
