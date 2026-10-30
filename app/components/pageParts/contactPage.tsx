@@ -180,7 +180,7 @@ export const ContactPage = () => {
 								description={"TBA"}
 							/>
 							<SocialCard
-								href={"https://discord.com/"}
+								href={"https://discord.com/users/338943515184594944"}
 								icon={faDiscord}
 								title={"Discord"}
 								description={"dark0ng"}
