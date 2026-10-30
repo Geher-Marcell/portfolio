@@ -51,7 +51,7 @@ const Projects: Project[] = [
 	},
 	{
 		id: 4,
-		name: "Project 4@p",
+		name: "Project 4",
 		description:
 			"Description of project 3. This project was awesome so i wrote a long ahh description",
 		tags: ["React", "Next.js", "TailwindCSS"],

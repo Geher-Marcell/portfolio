@@ -65,14 +65,12 @@ export default function Home() {
 								id="projectsPage"
 								data-name="Projects">
 								<ProjectsPage />
-								{/* <div className="h-[800px] border-amber-500 border-2" /> */}
 							</div>
 							<div
 								className="w-full px-10"
 								id="contactPage"
 								data-name="Contact">
 								<ContactPage />
-								{/* <div className="h-[500px] border-red-500 border-2" /> */}
 							</div>
 						</main>
 					</div>

@@ -54,7 +54,7 @@ export const AboutPage = () => {
 							</div>
 						</div>
 					</Card>
-					<Card className="h-76">
+					<Card className="h-76 w-full md:w-fit flex items-center justify-center">
 						<img
 							loading="lazy"
 							src="https://placehold.co/180x270"
@@ -63,10 +63,10 @@ export const AboutPage = () => {
 							height={270}
 						/>
 					</Card>
-					<div className="w-fit h-full xl:h-76 grid grid-cols-2 gap-4">
+					<div className="w-full md:w-fit h-full xl:h-76 grid grid-cols-2 gap-4">
 						{Cards.map((card, index) => (
 							<Card
-								className="w-40 h-28 md:w-40 lg:w-60 lg:h-36 flex flex-col justify-center items-center"
+								className="w-40 h-28 md:w-40 lg:w-60 lg:h-36 mx-auto flex flex-col justify-center items-center"
 								key={index}>
 								<h1 className="text-red-500 font-bold text-4xl md:text-5xl">
 									<CountUp target={card.value} suffix={card.suffix} />
