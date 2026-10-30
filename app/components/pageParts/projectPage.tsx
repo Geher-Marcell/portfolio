@@ -18,48 +18,48 @@ interface Project {
 const Projects: Project[] = [
 	{
 		id: 1,
-		name: "Project 1",
+		name: "Jedligram",
 		description:
-			"Description of project 1. This project was awesome so i wrote a long ahh description",
-		tags: ["React", "Next.js", "TailwindCSS"],
-		github: "https://github.com/Geher-Marcell/portfolio",
-		live: "https://darkiex.dev",
+			"Jedligram is a school project that is a social media platform for students. It is built with React, Laravel and MySql. It is a full-stack web application that allows students to connect with each other, share posts, and comment on posts.",
+		tags: ["React", "Laravel", "MySql", "DevOps"],
+		github: "https://github.com/jedligramkft",
+		live: "https://jedligram.app",
 		featured: 1,
-		image: "https://placehold.co/600x400",
+		image: "./ProjectImages/Jedligram.png",
 	},
 	{
 		id: 2,
-		name: "Project 2",
+		name: "Depot Dash",
 		description:
-			"Description of project 2. This project was awesome so i wrote a long ahh description",
-		tags: ["React", "Next.js", "TailwindCSS"],
-		github: "https://github.com/Geher-Marcell/portfolio",
-		live: "https://darkiex.dev",
+			"An incremental train game built with phaser 3. The game is a simple train game where the player has to manage a train depot and deliver trains to different stations. The player can upgrade the depot and the trains to increase the efficiency of the depot.",
+		tags: ["Typescript", "Phaser 3", "HTML"],
+		github: "https://github.com/Geher-Marcell/train_game",
+		live: "https://train.darkiex.dev",
 		featured: 2,
-		image: "https://placehold.co/600x400",
+		image: "./ProjectImages/DepotDash.png",
 	},
-	{
-		id: 3,
-		name: "Project 3",
-		description:
-			"Description of project 3. This project was awesome so i wrote a long ahh description",
-		tags: ["React", "Next.js", "TailwindCSS"],
-		github: "https://github.com/Geher-Marcell/portfolio",
-		live: "https://darkiex.dev",
-		featured: 2,
-		image: "https://placehold.co/600x400",
-	},
-	{
-		id: 4,
-		name: "Project 4",
-		description:
-			"Description of project 3. This project was awesome so i wrote a long ahh description",
-		tags: ["React", "Next.js", "TailwindCSS"],
-		github: "https://github.com/Geher-Marcell/portfolio",
-		live: "https://darkiex.dev",
-		featured: 3,
-		image: "https://placehold.co/600x400",
-	},
+	// {
+	// 	id: 3,
+	// 	name: "Project 3",
+	// 	description:
+	// 		"Description of project 3. This project was awesome so i wrote a long ahh description",
+	// 	tags: ["React", "Next.js", "TailwindCSS"],
+	// 	github: "https://github.com/Geher-Marcell/portfolio",
+	// 	live: "https://darkiex.dev",
+	// 	featured: 2,
+	// 	image: "https://placehold.co/600x400",
+	// },
+	// {
+	// 	id: 4,
+	// 	name: "Project 4",
+	// 	description:
+	// 		"Description of project 3. This project was awesome so i wrote a long ahh description",
+	// 	tags: ["React", "Next.js", "TailwindCSS"],
+	// 	github: "https://github.com/Geher-Marcell/portfolio",
+	// 	live: "https://darkiex.dev",
+	// 	featured: 3,
+	// 	image: "https://placehold.co/600x400",
+	// },
 ];
 
 const SectionHeader = ({ title }: { title: string }) => {
@@ -104,6 +104,7 @@ export const ProjectsPage = () => {
 								<div className="relative h-64 lg:h-full min-h-[300px] bg-neutral-800">
 									{featured1.image ? (
 										<img
+											loading="lazy"
 											src={featured1.image}
 											alt={featured1.name}
 											className="w-full h-full object-cover"
@@ -115,7 +116,7 @@ export const ProjectsPage = () => {
 									)}
 								</div>
 								{/* Info half */}
-								<div className="p-6 lg:p-8 flex flex-col justify-center gap-4">
+								<div className="p-6 lg:p-8 flex flex-col justify-evenly gap-4">
 									<div className="flex items-center gap-2">
 										<span className="px-2 py-1 text-xs font-bold bg-red-700 rounded-md">
 											#1 Featured
@@ -177,6 +178,7 @@ export const ProjectsPage = () => {
 									<div className="relative h-48 bg-neutral-800">
 										{project.image ? (
 											<img
+												loading="lazy"
 												src={project.image}
 												alt={project.name}
 												className="w-full h-full object-cover"
