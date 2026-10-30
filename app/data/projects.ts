@@ -89,6 +89,7 @@ export const getProjectNeighbours = (slug: string) => {
 	const index = projects.findIndex((project) => project.slug === slug);
 	return {
 		previous: index > 0 ? projects[index - 1] : null,
-		next: index >= 0 && index < projects.length - 1 ? projects[index + 1] : null,
+		next:
+			index >= 0 && index < projects.length - 1 ? projects[index + 1] : null,
 	};
 };

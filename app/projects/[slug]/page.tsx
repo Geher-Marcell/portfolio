@@ -10,7 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Card } from "@/app/components/common/Card";
-import { getProject, getProjectNeighbours, projects } from "@/app/data/projects";
+import {
+	getProject,
+	getProjectNeighbours,
+	projects,
+} from "@/app/data/projects";
 import { SITE_URL } from "@/app/seo";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -27,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		return { title: "Project not found" };
 	}
 
-	const title = `${project.name} — Case Study`;
+	const title = `${project.name}`;
 
 	return {
 		title,
@@ -114,9 +118,7 @@ export default async function ProjectCaseStudyPage({ params }: Props) {
 					<div className="h-0.5 w-8 rounded-xl bg-red-500" />
 					<p className="text-sm font-bold">Case study</p>
 				</div>
-				<h1 className="mt-4 text-4xl font-bold sm:text-5xl">
-					{project.name}
-				</h1>
+				<h1 className="mt-4 text-4xl font-bold sm:text-5xl">{project.name}</h1>
 				<p className="mt-4 text-lg text-neutral-300">{project.tagline}</p>
 				<div className="mt-6 flex flex-wrap gap-2">
 					{project.tags.map((tag) => (
@@ -153,9 +155,7 @@ export default async function ProjectCaseStudyPage({ params }: Props) {
 				<div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-xl border border-white/10 bg-neutral-900">
 					<Image
 						src={project.image}
-						alt={
-							project.imageAlt ?? `${project.name} project screenshot`
-						}
+						alt={project.imageAlt ?? `${project.name} project screenshot`}
 						fill
 						priority
 						sizes="(max-width: 1024px) 100vw, 1024px"
@@ -167,16 +167,12 @@ export default async function ProjectCaseStudyPage({ params }: Props) {
 			<div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
 				<article className="space-y-10">
 					<section aria-labelledby="overview">
-						<h2
-							id="overview"
-							className="text-2xl font-bold sm:text-3xl">
+						<h2 id="overview" className="text-2xl font-bold sm:text-3xl">
 							Overview
 						</h2>
 						<div className="mt-4 space-y-4">
 							{project.overview.map((paragraph) => (
-								<p
-									key={paragraph}
-									className="leading-relaxed text-neutral-300">
+								<p key={paragraph} className="leading-relaxed text-neutral-300">
 									{paragraph}
 								</p>
 							))}
@@ -184,9 +180,7 @@ export default async function ProjectCaseStudyPage({ params }: Props) {
 					</section>
 
 					<section aria-labelledby="what-i-built">
-						<h2
-							id="what-i-built"
-							className="text-2xl font-bold sm:text-3xl">
+						<h2 id="what-i-built" className="text-2xl font-bold sm:text-3xl">
 							What I built
 						</h2>
 						<ul className="mt-4 space-y-3">
