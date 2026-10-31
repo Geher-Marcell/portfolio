@@ -4,7 +4,7 @@ import { WelcomePage } from "./components/pageParts/welcomePage";
 import { AboutPage } from "./components/pageParts/aboutPage";
 import Navbar from "./components/navigation/Navbar";
 import Circle from "./components/background/Circle";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ContactPage } from "./components/pageParts/contactPage";
 import { ProjectsPage } from "./components/pageParts/projectPage";
 import { useHashScroll } from "./components/utils/useHashScroll";
@@ -20,7 +20,7 @@ export default function Home() {
 		<>
 			<div className="relative overflow-hidden">
 				<div className="h-dvh w-full overflow-auto">
-					<Navbar />
+					<Navbar scrollRef={scrollContainerRef} />
 					<Border />
 					<div
 						ref={scrollContainerRef}

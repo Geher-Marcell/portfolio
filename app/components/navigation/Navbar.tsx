@@ -1,9 +1,11 @@
 "use client";
-import { AnimatePresence, motion } from "motion/react";
-import React, { useState } from "react";
+import { AnimatePresence, hover, motion } from "motion/react";
+import React, { useCallback, useState } from "react";
 import { SECTIONS } from "./sections";
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<{
+	scrollRef: React.RefObject<HTMLDivElement | null>;
+}> = ({ scrollRef }) => {
 	const animDelay = 1.2;
 	const animDuration = 0.6;
 
@@ -11,7 +13,26 @@ const Navbar: React.FC = () => {
 
 	const [currentPage, setCurrentPage] = useState<string>(sections[0].id);
 
-	const [opened, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
+
+	const [scrollDir, setScrollDir] = useState<1 | -1>(1);
+	const lastScrollPos = React.useRef<number>(0);
+
+	React.useEffect(() => {
+		// Use document.body if window scroll doesn't trigger
+		const target = scrollRef.current || document.body;
+
+		const handleScroll = () => {
+			// console.log("scrolling", target.scrollTop, lastScrollPos.current);
+			const dir = target.scrollTop > lastScrollPos.current;
+			setScrollDir(dir ? 1 : -1);
+			lastScrollPos.current = target.scrollTop;
+		};
+		target.addEventListener("scroll", handleScroll, { passive: true });
+		return () => {
+			target.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
 	React.useEffect(() => {
 		const objects = sections
@@ -62,6 +83,15 @@ const Navbar: React.FC = () => {
 	return (
 		<>
 			<motion.nav
+				onClick={() => {
+					setScrollDir(-1);
+				}}
+				onHoverStart={() => {
+					setScrollDir(-1);
+				}}
+				onHoverEnd={() => {
+					setScrollDir(-1);
+				}}
 				id="navbar"
 				aria-label="Primary"
 				initial={{ opacity: 0, y: -20 }}
@@ -71,9 +101,10 @@ const Navbar: React.FC = () => {
 					duration: animDuration,
 					ease: "easeOut",
 				}}
-				className="*:max-w-140  *:bg-neutral-900 *:absolute *:left-1/2 *:-translate-x-1/2 *:rounded-2xl *:shadow-lg *:z-50 *:border *:border-neutral-700">
+				className="*:max-w-140 *:bg-neutral-900 *:absolute *:left-1/2 *:-translate-x-1/2 *:rounded-2xl *:shadow-lg *:z-50 *:border *:border-neutral-700">
 				{/* Desktop View */}
-				<div className="top-14 hidden sm:block py-1 px-2">
+				<div
+					className={`transition-all duration-150 top-14 hidden sm:block py-1 px-2`}>
 					<div className="flex justify-center items-center">
 						<div className="gap-4 flex items-center justify-center relative">
 							{sections.map((section) => (
@@ -109,15 +140,16 @@ const Navbar: React.FC = () => {
 					</div>
 				</div>
 				{/* Mobile View */}
-				<div className="top-8 block sm:hidden px-2 w-5/6 p-2">
+				<div
+					className={`top-8 block sm:hidden px-2 w-5/6 p-2 transition-all duration-150 ${scrollDir === 1 && isOpen === false ? "scale-80" : "scale-100"} hover:scale-100`}>
 					<div className="flex items-center justify-end">
 						<motion.button
-							onClick={() => setIsOpen(!opened)}
+							onClick={() => setIsOpen(!isOpen)}
 							className="space-y-2 *:w-7 *:h-0.5 p-2"
 							style={{ color: "var(--foreground-color)" }}>
 							<motion.div
 								className="origin-right"
-								animate={{ rotate: opened ? -45 : 0 }}
+								animate={{ rotate: isOpen ? -45 : 0 }}
 								transition={{
 									ease: "easeInOut",
 									duration: 0.3,
@@ -126,7 +158,7 @@ const Navbar: React.FC = () => {
 									backgroundColor: "var(--foreground-color)",
 								}}></motion.div>
 							<motion.div
-								animate={{ scaleX: opened ? 0 : 1 }}
+								animate={{ scaleX: isOpen ? 0 : 1 }}
 								transition={{
 									ease: "easeInOut",
 									duration: 0.3,
@@ -136,7 +168,7 @@ const Navbar: React.FC = () => {
 								}}></motion.div>
 							<motion.div
 								className="origin-right"
-								animate={{ rotate: opened ? 45 : 0 }}
+								animate={{ rotate: isOpen ? 45 : 0 }}
 								transition={{
 									ease: "easeInOut",
 									duration: 0.3,
@@ -147,7 +179,7 @@ const Navbar: React.FC = () => {
 						</motion.button>
 					</div>
 					<AnimatePresence>
-						{opened && (
+						{isOpen && (
 							<motion.div
 								key="navMenu"
 								className="w-full rounded-b-lg flex flex-col overflow-hidden bg-neutral-900"
